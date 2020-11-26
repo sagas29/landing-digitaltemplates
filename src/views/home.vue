@@ -25,7 +25,7 @@
                             </div>
                             <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
                                 <div class="card-profile-actions py-4 mt-lg-0">
-                                   <base-button type="default" size="md" class="float-right"@click="$router.push('/')">SALIR</base-button>
+                                   <base-button type="default" size="md" class="float-right" @click="$router.push('/')">SALIR</base-button>
                                 </div>
                             </div>
                             <div class="col-lg-4 order-lg-1">
@@ -77,6 +77,7 @@
                             </h3>
                            
                         </div>
+<div class="row justify-content-center">
           <table class="table table-responsive">
   <thead>
     <tr>
@@ -135,6 +136,7 @@
     
   </tbody>
 </table>
+</div>
 </div>
                                 </div>
                             </div>

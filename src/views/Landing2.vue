@@ -58,7 +58,7 @@
                                  Recuerdame
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="button" class="btn btn-1 btn-success"@click="$router.push('home')">Iniciar sesion</base-button>
+                                    <base-button type="button" class="btn btn-1 btn-success" @click="$router.push('home')">Iniciar sesion</base-button>
                                 </div>
                             </form>
                        
