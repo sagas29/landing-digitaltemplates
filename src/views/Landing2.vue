@@ -26,7 +26,7 @@
                                 <h1 class="display-3  text-white">DigitalTemplates
                                     <span>Tu oficina donde te encuentres</span>
                                 </h1>
-                                <p class="lead  text-white">Guarda edita y crea tus documenteos legales donde los necesites.</p>
+                                <p class="lead  text-white">Guarda ,edita y crea tus documentos legales donde los necesites.</p>
                                
                             </div>
                             
@@ -67,7 +67,7 @@
                         <div class="col-6">
                             <a href="#" class="text-light">
 
-                                <router-link to="/landing" class="text-light">Olvidaste tu Contraseña?</router-link>
+                                <router-link to="/" class="text-light">Olvidaste tu Contraseña?</router-link>
                             </a> 
                         </div>
                         <div class="col-6 text-right">

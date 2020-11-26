@@ -38,10 +38,7 @@
                                         <span class="heading">10</span>
                                         <span class="description">Doc. Subidos</span>
                                     </div>
-                                    <div>
-                                        <span class="heading">89</span>
-                                        <span class="description">Doc. vacantes</span>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

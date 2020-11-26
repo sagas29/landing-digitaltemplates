@@ -42,9 +42,10 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block ml-lg-4">
-                    <a href="https://www.creative-tim.com/product/vue-argon-design-system" target="_blank" rel="noopener"
+                    <a target="_blank" rel="noopener"
                        class="btn btn-neutral btn-icon">
-                        <span class="nav-link-inner--text">Planes</span>
+                       <router-link to="/home" class="text-light">Planes</router-link>
+                        
                     </a>
                 </li>
             </ul>
