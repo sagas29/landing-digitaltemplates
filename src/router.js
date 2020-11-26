@@ -7,7 +7,8 @@ import Landing from "./views/Landing.vue";
 import landing2 from "./views/Landing2.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
-import Profile from "./views/Profile.vue";
+import edit from "./views/edit.vue";
+import home from "./views/home.vue";
 
 Vue.use(Router);
 
@@ -60,11 +61,20 @@ export default new Router({
       }
     },
     {
-      path: "/profile",
-      name: "profile",
+      path: "/edit",
+      name: "edit",
       components: {
         header: AppHeader,
-        default: Profile,
+        default: edit,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/home",
+      name: "home",
+      components: {
+        header: AppHeader,
+        default: home,
         footer: AppFooter
       }
     }

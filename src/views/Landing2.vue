@@ -24,7 +24,7 @@
                             <div class="col-lg-6">
                               
                                 <h1 class="display-3  text-white">DigitalTemplates
-                                    <span>Tu ofinicna donde te encuentres</span>
+                                    <span>Tu oficina donde te encuentres</span>
                                 </h1>
                                 <p class="lead  text-white">Guarda edita y crea tus documenteos legales donde los necesites.</p>
                                
@@ -58,7 +58,7 @@
                                  Recuerdame
                                 </base-checkbox>
                                 <div class="text-center">
-                                    <base-button type="button" class="btn btn-1 btn-success">Iniciar sesion</base-button>
+                                    <base-button type="button" class="btn btn-1 btn-success"@click="$router.push('home')">Iniciar sesion</base-button>
                                 </div>
                             </form>
                        
