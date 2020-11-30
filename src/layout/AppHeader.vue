@@ -27,13 +27,6 @@
                         <span class="nav-link-inner--text d-lg-none">Facebook</span>
                     </a>
                 </li>
-                  <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="https://www.facebook.com/" target="_blank" rel="noopener"
-                       data-toggle="tooltip" title="Like us on Facebook">
-                        <i class="fa fa-facebook-square"></i>
-                        <span class="nav-link-inner--text d-lg-none">Facebook</span>
-                    </a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="https://twitter.com/" target="_blank" rel="noopener"
                        data-toggle="tooltip" title="Follow us on Twitter">
@@ -44,7 +37,7 @@
                 <li class="nav-item d-none d-lg-block ml-lg-4">
                     <a target="_blank" rel="noopener"
                        class="btn btn-neutral btn-icon">
-                       <router-link to="/home" class="text-light">Planes</router-link>
+                       <router-link to="/plans" class="text-light">Planes</router-link>
                         
                     </a>
                 </li>

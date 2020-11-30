@@ -4,11 +4,13 @@ import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
 import Components from "./views/Components.vue";
 import Landing from "./views/Landing.vue";
-import landing2 from "./views/Landing2.vue";
+import splash from "./views/splash.vue";
 import Login from "./views/Login.vue";
 import Register from "./views/Register.vue";
+import logup from "./views/logup.vue";
 import edit from "./views/edit.vue";
 import home from "./views/home.vue";
+import plans from "./views/plans.vue";
 
 Vue.use(Router);
 
@@ -17,10 +19,10 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "landing2",
+      name: "splash",
       components: {
         header: AppHeader,
-        default: landing2,
+        default: splash,
         footer: AppFooter
       }
     },
@@ -61,6 +63,15 @@ export default new Router({
       }
     },
     {
+      path: "/logup",
+      name: "logup",
+      components: {
+        header: AppHeader,
+        default: logup,
+        footer: AppFooter
+      }
+    },
+    {
       path: "/edit",
       name: "edit",
       components: {
@@ -73,8 +84,17 @@ export default new Router({
       path: "/home",
       name: "home",
       components: {
-        header: AppHeader,
+       // header: AppHeader,
         default: home,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/plans",
+      name: "plans",
+      components: {
+        header: AppHeader,
+        default: plans,
         footer: AppFooter
       }
     }

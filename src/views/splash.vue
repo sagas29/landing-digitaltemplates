@@ -1,5 +1,5 @@
 <template>
-    <div>
+   <div id="app">
 
         <div class="position-relative">
             <!-- shape Hero -->
@@ -19,7 +19,7 @@
                     <div class="col px-0">
                         <div class="row"> 
                             
-                             <img src="img/brand/icono.png" class="mg-fluid floating" style="width: 400px;">
+                             <img src="img/brand/icono.png" class="mg-fluid " style="width: 400px;">
                              
                             <div class="col-lg-6">
                               
@@ -43,22 +43,30 @@
                           class="border-1">
                        
                      
-                            <form role="form">
+                            <form role="form" >
                                 <base-input alternative
                                             class="mb-3"
                                             placeholder="Email"
-                                            addon-left-icon="ni ni-email-83">
+                                            addon-left-icon="ni ni-email-83"
+                                            v-model="usuario">
                                 </base-input>
                                 <base-input alternative
                                             type="password"
                                             placeholder="Contraseña"
-                                            addon-left-icon="ni ni-lock-circle-open">
+                                            addon-left-icon="ni ni-lock-circle-open"
+                                             v-model="contraseña">
                                 </base-input>
-                                <base-checkbox>
+                                <base-checkbox v-model="remember">
                                  Recuerdame
                                 </base-checkbox>
+                            <p v-if="errors.length">
+                             <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
+                                <ul>
+                                     <li v-for="error in errors"><p class="text-danger mb-0">{{ error }}</p></li>
+                                 </ul>
+                             </p>
                                 <div class="text-center">
-                                    <base-button type="button" class="btn btn-1 btn-success" @click="$router.push('home')">Iniciar sesion</base-button>
+                                    <base-button type="button" class="btn btn-1 btn-success" @click="checkForm">Iniciar sesion</base-button>
                                 </div>
                             </form>
                        
@@ -72,7 +80,7 @@
                         </div>
                         <div class="col-6 text-right">
                             <a href="#" class="text-light">
-                                <router-link to="/register" class="text-light">Registrate</router-link>
+                                <router-link to="/logup" class="text-light">Registrate</router-link>
                             </a>
                         </div>
                     </div>
@@ -94,7 +102,48 @@
 
 <script>
 export default {
-  name: "home",
-  components: {}
+     name: 'app',
+    data(){
+        return{
+             errors:[],
+            remember: false,
+        
+            usuario:null,
+            contraseña:null
+
+         
+        }
+    },
+    methods:{
+
+         checkForm: function (e) {
+      if (this.usuario && this.contraseña) {
+               this.errors = [];
+       // return true;
+                 
+      }
+           this.errors = [];
+      if (!this.usuario) {
+        this.errors.push('Usuario necesario');
+
+      }else if (!this.validEmail(this.usuario)) {
+        this.errors.push('El correo electrónico debe ser válido.');
+      }
+      if (!this.contraseña) {
+        this.errors.push('Contraseña necesaria');
+
+      }
+      if (!this.errors.length) {
+        return true;
+      }
+      e.preventDefault();
+      },
+       validEmail: function (email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(email);
+    }
+
+ }
 };
+
 </script>

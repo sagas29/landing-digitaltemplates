@@ -11,7 +11,7 @@
                 <span></span>
             </div>
         </section>
-        <section class="section section-skew">
+        <section class="section-profile-cover section-shaped my-0">
             <div class="container">
                 <card shadow class="card-profile mt--300" no-body>
                     <div class="px-4">
@@ -62,7 +62,7 @@
         </section>
          <section class="section section-skew">
             <div class="container">
-                <card shadow class="card-profile mt--400" no-body>
+                <card shadow class="card-profile mt--200" no-body>
                     <div class="px-4">
                         <div class="row justify-content-center">
                             
