@@ -90,7 +90,7 @@
                           class="border-0">
                          <template>
                              <div class="text-center text-muted mb-4">
-                                <small>Vista Previa del documento</small>
+                                <small>Vista Previa del documento {{this.$route.params.id}}</small>
                             </div>
                            
                         </template>

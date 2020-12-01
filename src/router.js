@@ -11,6 +11,9 @@ import logup from "./views/logup.vue";
 import edit from "./views/edit.vue";
 import home from "./views/home.vue";
 import plans from "./views/plans.vue";
+import categories from "./views/categories.vue";
+import detailCategorie from "./views/detailCategorie.vue";
+ 
 
 Vue.use(Router);
 
@@ -72,7 +75,7 @@ export default new Router({
       }
     },
     {
-      path: "/edit",
+      path: "/edit/:id",
       name: "edit",
       components: {
         header: AppHeader,
@@ -95,6 +98,24 @@ export default new Router({
       components: {
         header: AppHeader,
         default: plans,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/categories",
+      name: "categories",
+      components: {
+        header: AppHeader,
+        default: categories,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/detailCategorie/:id",
+      name: "detailCategorie",
+      components: {
+        header: AppHeader,
+        default: detailCategorie,
         footer: AppFooter
       }
     }

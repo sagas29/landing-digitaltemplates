@@ -19,7 +19,7 @@
                     <div class="col px-0">
                         <div class="row"> 
                             
-                             <img src="img/brand/icono.png" class="mg-fluid " style="width: 400px;">
+                             <img src="img/brand/icono.png" class="mg-fluid " style="width: 400px">
                              
                             <div class="col-lg-6">
                               
@@ -48,13 +48,15 @@
                                             class="mb-3"
                                             placeholder="Email"
                                             addon-left-icon="ni ni-email-83"
-                                            v-model="usuario">
+                                            v-model="usuario"
+                                            v-on:keyup="checkForm">
                                 </base-input>
                                 <base-input alternative
                                             type="password"
                                             placeholder="Contraseña"
                                             addon-left-icon="ni ni-lock-circle-open"
-                                             v-model="contraseña">
+                                            v-model="contraseña"
+                                            v-on:keyup="checkForm">
                                 </base-input>
                                 <base-checkbox v-model="remember">
                                  Recuerdame
@@ -109,8 +111,7 @@ export default {
             remember: false,
         
             usuario:null,
-            contraseña:null
-
+            contraseña:null,
          
         }
     },

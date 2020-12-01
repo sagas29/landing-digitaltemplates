@@ -37,8 +37,9 @@
                         <div class="row row-grid">
                             <div class="col-lg-4">
                                 <card class="border-0" hover shadow body-classes="py-5">
+                                     <h1 class="heading mb-5">Nombre del plan</h1>
                                     <div>
-                                         <h1 class="display1 mb-0">$ 19.99</h1>
+                                         <h1 class="display2 mb-0">$ 19.99</h1>
                                          <a>/mes.</a>
                                     </div>
                                         <ul>
@@ -46,11 +47,11 @@
                                          <li>Tea</li>
                                          <li>Milk</li>
                                         </ul> 
-                                   
-                                    <base-button tag="a" href="#" type="btn btn-success" class="mt-4">
-                                        Learn more
+                                    <base-button tag="a" href="#" type="btn btn-success" class="mt-5">
+                                        Subscribirse
                                     </base-button>
                                 </card>
+                                
                             </div>
                             
                                                      

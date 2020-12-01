@@ -81,7 +81,7 @@
                             
                                
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4" >Registrar cuenta</base-button>
+                                    <base-button type="primary" class="my-4" >Registrar cuenta{{this.$appName}}</base-button>
                                 </div>
                             </form>
                         </template>
@@ -97,6 +97,7 @@ export default {
      name: 'app',
     data(){
         return{
+            
              strength:'Fuerte',
         errors:[],
         datosP:{
@@ -120,6 +121,7 @@ export default {
         this.errors = [];
          if (!this.datosP.nombre) {
          this.errors.push('nombre necesario');
+         this.$appName="mi app";
        }
        if (!this.datosP.apellido) {
         this.errors.push('apellido necesaria');

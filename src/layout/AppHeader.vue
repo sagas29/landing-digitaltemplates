@@ -1,12 +1,10 @@
 <template>
     <header class="header-global">
-        <base-nav class="navbar-main" transparent type="" effect="light" expand>
-            <router-link slot="brand" class="navbar-brand mr-lg-5" to="/">
-                <img src="img/brand/icono.png" alt="logo">
-            </router-link>
+        <base-nav class="navbar-brand" transparent type="" effect="light" expand>
+           
 
             <div class="row" slot="content-header" slot-scope="{closeMenu}">
-                <div class="col-6 collapse-brand">
+                <div class="col-5 collapse-brand">
                     <a href="">
                         <img src="img/brand/icono.png">
                     </a>
@@ -35,11 +33,11 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-lg-block ml-lg-4">
-                    <a target="_blank" rel="noopener"
-                       class="btn btn-neutral btn-icon">
-                       <router-link to="/plans" class="text-light">Planes</router-link>
-                        
-                    </a>
+                                  
+                                      <base-button tag="a" href="#" type="btn btn-success" v-on:click="$router.push('/plans')" class="mt-2">
+                                        Ver planes
+                                    </base-button>
+                
                 </li>
             </ul>
         </base-nav>
@@ -59,4 +57,9 @@ export default {
 };
 </script>
 <style>
+.Mylogo{
+    width: 100px;
+    height: 100px;
+    border: blanchedalmond;
+}
 </style>
