@@ -1,28 +1,26 @@
 <template>
-    <div>
-        <div class="position-relative">
-            <!-- shape Hero -->
-            <section class="section-shaped my-2">
-                <div class="shape shape-style-3 shape-default shape-skew">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="container shape-container d-flex">
+    <section class="section-hero section-shaped my-0">
+        <div class="shape shape-style-3 shape-primary">
+            <span class="span-150"></span>
+            <span class="span-50"></span>
+            <span class="span-50"></span>
+            <span class="span-75"></span>
+            <span class="span-100"></span>
+            <span class="span-75"></span>
+            <span class="span-50"></span>
+            <span class="span-100"></span>
+            <span class="span-50"></span>
+            <span class="span-100"></span>
+        </div>
+        <div class="container shape-container d-flex align-items-center">
+       <section class="section section-skew">
+            <div class="container align-items-center">
+                     <div class="container shape-container d-flex">
                      <h1 class="display-3  text-white">
                          Categorias de documentos disponibles.
                       </h1>
                 </div>
-                
-            </section> 
-        </div>
-        <section class="section section-lg pt-lg-0 mt--300">
+            <section class="section section-lg pt-lg-0 mt--000">
             
             <div class="container">
                 <div class="row justify-content-center">
@@ -37,7 +35,8 @@
                                     <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
                                         every summer, and that process will continue whatever happens.</p>
                                    
-                                      <base-button tag="a" href="#" type="btn btn-primary" class="mt-2">
+                                      <base-button tag="a" href="#" type="btn btn-primary" class="mt-2"
+                                      @click="$router.push('/detailCategorie/Doc.Juridicos')">
                                         Ver documentos
                                     </base-button>
                                 </div>
@@ -55,7 +54,8 @@
                                     <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
                                         every summer, and that process will continue whatever happens.</p>
                                   
-                                      <base-button tag="a" href="#" type="btn btn-success" class="mt-2">
+                                      <base-button tag="a" href="#" type="btn btn-success" class="mt-2"
+                                       @click="$router.push('/detailCategorie/Doc.contaduria')">
                                          Ver documentos
                                     </base-button>
                                 </div>
@@ -72,7 +72,8 @@
                                     <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
                                         every summer, and that process will continue whatever happens.</p>
                                     
-                                      <base-button tag="a" href="#" type="btn btn-warning" class="mt-2">
+                                      <base-button tag="a" href="#" type="btn btn-warning" class="mt-2"
+                                           @click="$router.push('/detailCategorie/Doc.Empleo')">
                                          Ver documentos
                                     </base-button>
                                 </div>
@@ -85,11 +86,12 @@
                                 <div class="pl-4">
                                       <icon name="ni ni-hat-3" gradient="success" color="white" shadow
                                           rounded></icon>
-                                    <h5 class="title text-success">Doc.Empleos</h5>
+                                    <h5 class="title text-success">Doc.Incripcion de empresas</h5>
                                     <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
                                         every summer, and that process will continue whatever happens.</p>
                                    
-                                      <base-button tag="a" href="#" type="btn btn-danger" class="mt-2">
+                                      <base-button tag="a" href="#" type="btn btn-danger" class="mt-2"
+                                        @click="$router.push('/detailCategorie/Doc.Incripcion de empresas')">
                                          Ver documentos
                                     </base-button>
                                 </div>
@@ -104,14 +106,13 @@
                 </div>
             </div>
         </section>
-
-
-    </div>
+            </div>
+        </section>
+        </div>
+    </section>
 </template>
-
 <script>
-export default {
-  name: "home",
-  components: {}
-};
+export default {};
 </script>
+<style>
+</style>

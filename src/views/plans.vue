@@ -1,21 +1,20 @@
 <template>
-    <div>
-
-        <div class="position-relative">
-            <!-- shape Hero -->
-            <section class="section-shaped my-0">
-                <div class="shape shape-style-1 shape-default shape-skew">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div class="container shape-container d-flex">
+ <div id="app">
+    <section class="section section-shaped section-lg my-0">
+        <div class="shape shape-style-3 shape-default bg-gradient-default">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="container pt-lg-lg">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+             <div class="container shape-container d-flex">
                     <div class="col px-0">
                         <div class="row">
                             <div class="col-lg-10">
@@ -27,10 +26,8 @@
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- 1st Hero Variation -->
-        </div>
-        <section class="section section-lg pt-lg-0 mt--200">
+                
+                     <section class="section section-lg pt-lg-10 mt--000">
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
@@ -51,23 +48,32 @@
                                         Subscribirse
                                     </base-button>
                                 </card>
-                                
-                            </div>
+                             </div> 
+                          
+                                 
+                           
                             
-                                                     
+                                                    
                         </div>
                     </div>
                 </div>
             </div>
+            
+   <div class="container mt-5">
+       <base-button block type="success" @click="$router.push('/home')">Volver a mi perfil</base-button>
+   </div>
+
         </section>
-
-
-    </div>
-</template>
-
-<script>
+                </div>
+            </div>
+        </div>
+    </section>
+ </div>
+</template><script>
 export default {
-  name: "home",
+  name: "plans",
   components: {}
 };
 </script>
+<style>
+</style>

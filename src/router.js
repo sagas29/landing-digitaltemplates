@@ -13,6 +13,7 @@ import home from "./views/home.vue";
 import plans from "./views/plans.vue";
 import categories from "./views/categories.vue";
 import detailCategorie from "./views/detailCategorie.vue";
+
  
 
 Vue.use(Router);
@@ -96,7 +97,7 @@ export default new Router({
       path: "/plans",
       name: "plans",
       components: {
-        header: AppHeader,
+       // header: AppHeader,
         default: plans,
         footer: AppFooter
       }
@@ -110,7 +111,7 @@ export default new Router({
         footer: AppFooter
       }
     },
-    {
+      {
       path: "/detailCategorie/:id",
       name: "detailCategorie",
       components: {

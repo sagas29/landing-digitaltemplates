@@ -1,6 +1,6 @@
 <template>
     <section class="section-hero section-shaped my-0">
-        <div class="shape shape-style-1 shape-primary">
+        <div class="shape shape-style-3 shape-primary">
             <span class="span-150"></span>
             <span class="span-50"></span>
             <span class="span-50"></span>
@@ -58,7 +58,7 @@
       <td>categoria de doc.</td>
       <td>fecha</td>
       <td>
-        <a> <button type="button" class="btn btn-warning btn-sm" @click="$router.push('edit')"><!----><!----><!---->Editar</button></a>
+        <a> <button type="button" class="btn btn-warning btn-sm" @click="$router.push('/edit/100')"><!----><!----><!---->Editar</button></a>
       
         <a> <button type="button" class="btn btn-danger btn-sm"><!----><!----><!---->Eliminar</button></a>
       </td>
