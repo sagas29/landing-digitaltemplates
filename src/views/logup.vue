@@ -81,7 +81,7 @@
                             
                                
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4" >Registrar cuenta{{this.$appName}}</base-button>
+                                    <base-button type="primary" class="my-4" :disabled='dissabled'@click="register">Registrar cuenta{{this.$appName}}</base-button>
                                 </div>
                             </form>
                         </template>
@@ -97,7 +97,7 @@ export default {
      name: 'app',
     data(){
         return{
-            
+            dissabled:true,
              strength:'Fuerte',
         errors:[],
         datosP:{
@@ -113,11 +113,6 @@ export default {
     methods:{
 
         checkForm: function (e) {
-      if (this.datosP.nombre && this.datosP.apellido && this.datosP.email && this.datosP.contraseña && this.datosP.cofirmacion) {
-             // this.errors = [];
-                    // return true;
-                 
-      }
         this.errors = [];
          if (!this.datosP.nombre) {
          this.errors.push('nombre necesario');
@@ -140,10 +135,14 @@ export default {
         this.errors.push('Contrase;as no coinciden');
       }
         if (!this.errors.length) {
-        return true;
+       this.dissabled=false;
+        return true
+     
+      }else{
+           this.dissabled=true;
       }
-       e.preventDefault();
-    },
+
+      },
     confirmPass: function(contraseña,confirmacion){
          if(contraseña!=confirmacion){
            return false;
@@ -159,7 +158,11 @@ export default {
     validEmail: function (email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-    }
+    },
+        register (){
+            console.log("regitro");
+
+        }
     }
 };
 

@@ -68,7 +68,7 @@
                                  </ul>
                              </p>
                                 <div class="text-center">
-                                    <base-button type="button" class="btn btn-1 btn-success" @click="checkForm">Iniciar sesion</base-button>
+                                    <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' @click="login">Iniciar sesion</base-button>
                                 </div>
                             </form>
                        
@@ -109,7 +109,7 @@ export default {
         return{
              errors:[],
             remember: false,
-        
+            dissabled: true,
             usuario:null,
             contraseña:null,
          
@@ -117,13 +117,8 @@ export default {
     },
     methods:{
 
-         checkForm: function (e) {
-      if (this.usuario && this.contraseña) {
-               this.errors = [];
-       // return true;
-                 
-      }
-           this.errors = [];
+         checkForm: function () {
+   this.errors = [];
       if (!this.usuario) {
         this.errors.push('Usuario necesario');
 
@@ -135,14 +130,22 @@ export default {
 
       }
       if (!this.errors.length) {
-        return true;
+       this.dissabled=false;
+        return true
+     
+      }else{
+           this.dissabled=true;
       }
-      e.preventDefault();
+
       },
        validEmail: function (email) {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
-    }
+    },
+        login(){
+            console.log(this.usuario);
+            console.log(this.contraseña);
+        }
 
  }
 };
