@@ -81,7 +81,7 @@
                             
                                
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4" :disabled='dissabled'@click="register">Registrar cuenta{{this.$appName}}</base-button>
+                                    <base-button type="primary" class="my-4" :disabled='dissabled' @click="register">Registrar cuenta{{this.$appName}}</base-button>
                                 </div>
                             </form>
                         </template>
@@ -93,6 +93,7 @@
  </div>
 </template>
 <script>
+import auth from "@/logic/auth";
 export default {
      name: 'app',
     data(){
@@ -159,8 +160,12 @@ export default {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-        register (){
-            console.log("regitro");
+        async register (){
+            try{
+            await auth.register(this.datosP.nombre,this.datosP.apellido,this.datosP.email);
+            }catch (error){
+                console.log(error);
+            }
 
         }
     }

@@ -52,7 +52,7 @@
                         <div class="mt-5 py-5 border-top text-center">
                             <div class="row justify-content-center">
                                <button type="button" class="btn btn-1 btn-success btn-lg"><!----><!----><!---->Nuevo docuemento</button>
-                               <button type="button" class="btn btn-primary btn-lg"><!----><!----><!---->historial de docuementos</button>
+                               <button type="button" class="btn btn-primary btn-lg"@click="login"><!----><!----><!---->historial de docuementos</button>
                                
                             </div>
                         </div>
@@ -86,50 +86,20 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>titulo de doc.</td>
-      <td>tipo de doc.</td>
-      <td>categoria de doc.</td>
-      <td>fecha</td>
+       <tr v-for="(usuario,indice) in usuarios" >
+      <td>{{usuario.id}}</td>
+      <td>{{usuario.nombre}}</td>
+      <td>{{usuario.apellido}}</td>
+      <td>{{usuario.telefono}}</td>
       <td>
-        <a> <button type="button" class="btn btn-warning btn-sm" @click="$router.push('edit')"><!----><!----><!---->Editar</button></a>
+        <a> <button type="button" class="btn btn-warning btn-sm" @click="$router.push('edit/'+ usuario.nombre)"><!----><!----><!---->Editar</button></a>
       
         <a> <button type="button" class="btn btn-danger btn-sm"><!----><!----><!---->Eliminar</button></a>
       </td>
     </tr>
-    <tr>
-      <td>titulo de doc.</td>
-      <td>tipo de doc.</td>
-      <td>categoria de doc.</td>
-      <td>fecha</td>
-      <td>
-                <a> <button type="button" class="btn btn-warning btn-sm"><!----><!----><!---->Editar</button></a>
-      
-        <a> <button type="button" class="btn btn-danger btn-sm"><!----><!----><!---->Eliminar</button></a>
-      </td>
-    </tr>
-    <tr>
-      <td>titulo de doc.</td>
-      <td>tipo de doc.</td>
-      <td>categoria de doc.</td>
-      <td>fecha</td>
-      <td>
-                <a> <button type="button" class="btn btn-warning btn-sm"><!----><!----><!---->Editar</button></a>
-      
-        <a> <button type="button" class="btn btn-danger btn-sm"><!----><!----><!---->Eliminar</button></a>
-      </td>
-    </tr>
-    <tr>
-      <td>titulo de doc.</td>
-      <td>tipo de doc.</td>
-      <td>categoria de doc.</td>
-      <td>fecha</td>
-      <td>
-               <a> <button type="button" class="btn btn-warning btn-sm"><!----><!----><!---->Editar</button></a>
-      
-        <a> <button type="button" class="btn btn-danger btn-sm"><!----><!----><!---->Eliminar</button></a>
-      </td>
-    </tr>
+
+
+ 
     
   </tbody>
 </table>
@@ -148,7 +118,28 @@
     </div>
 </template>
 <script>
-export default {};
+import auth from "@/logic/auth";
+export default {
+       name: 'app',
+       data(){
+           return{
+                usuarios: [],
+           }
+          
+       },
+       methods:{
+              async login(){
+           try{
+            let response = await auth.leerAPI();
+            this.usuarios = response.data;
+           }catch (error){
+               console.log(error);
+
+           }
+        }
+
+       }
+};
 </script>
 <style>
 

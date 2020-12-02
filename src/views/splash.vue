@@ -103,6 +103,7 @@
 </template>
 
 <script>
+import auth from "@/logic/auth";
 export default {
      name: 'app',
     data(){
@@ -142,9 +143,14 @@ export default {
       var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
     },
-        login(){
-            console.log(this.usuario);
-            console.log(this.contraseña);
+       async login(){
+           try{
+            await auth.leerAPI();
+            this.$router.push("/home");
+           }catch (error){
+               console.log(error);
+
+           }
         }
 
  }
