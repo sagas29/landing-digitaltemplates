@@ -82,7 +82,8 @@
                                
                                 <div class="text-center">
                                     <base-button type="primary" class="my-4" :disabled='dissabled' @click="register">Registrar cuenta{{this.$appName}}</base-button>
-                                </div>
+                                                               </div>
+                                 <router-link to="/" class="text-success">*Nah en otro momento</router-link>
                             </form>
                         </template>
                     </card>

@@ -1,7 +1,7 @@
 <template>
     <div class="profile-page">
         <section class="section-profile-cover section-shaped my-0">
-            <div class="shape shape-style-1 shape-primary shape-skew alpha-4">
+            <div class="shape shape-style-3 shape-primary shape-skew alpha-4">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -13,46 +13,92 @@
         </section>
         <section class="section-profile-cover section-shaped my-0">
             <div class="container">
-                <card shadow class="card-profile mt--300" no-body>
-                    <div class="px-4">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-3 order-lg-2">
-                                <div class="card-profile-image">
+                <card shadow class="card-profile mt--300">
+                    <div class="px-0">
+                        <div class="row">
+
+                        <div class="col-lg-3">
+                            <div class="card-profile-image">
                                     <a href="#">
-                                        <img src ="img/brand/icono.png" class="raised">
+                                        <img src ="img/brand/icono.png">
                                     </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                                <div class="card-profile-actions py-4 mt-lg-0">
-                                   <base-button type="default" size="md" class="float-right" @click="$router.push('/')">SALIR</base-button>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 order-lg-1">
-                                <div class="card-profile-stats d-flex justify-content-center">
-                                    <div>
-                                        <span class="heading">22</span>
-                                        <span class="description">Doc. propios</span>
-                                    </div>
-                                    <div>
-                                        <span class="heading">10</span>
-                                        <span class="description">Doc. Subidos</span>
-                                    </div>
-                                    
-                                </div>
                             </div>
                         </div>
-                        <div class="text-center mt-5">
-                            <h3>Nombre de Usuario
-                               
-                            </h3>
-                            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Pais ,  region</div>
+
+                        <div class="col-lg-4">
+                            <h3>Nombre de Usuario </h3>
+                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Pais ,  region</div>
+                        </div> 
+                         <div class="col-lg-5">
+                                   <base-button type="warning" size="sm" class="float-right" @click="$router.push('/')">Salir</base-button>
+                            </div>
+                        </div>
+                        <div class="col-lg-20">
+                        <card shadow class="shadow-lg--hover mt-3" >
+                            <div class="row">
+                                 <div class="col-md-4">
+                                  <h5>Nombre:</h5>
+                                 </div>
+                                 <div class="col-md-8">
+                                  <base-input alternative
+                                            class="mb-2"
+                                            :disabled="dissabled"
+                                            v-model='msg'>
+                                        </base-input>
+                                </div>
+                                
+                            </div>
+                             <div class="row">
+                                 <div class="col-md-4">
+                                  <h5>Apellido:</h5>
+                                 </div>
+                                 <div class="col-md-8">
+                                  <base-input alternative
+                                            class="mb-2"
+                                            :disabled="dissabled"
+                                            v-model='msg'>
+                                        </base-input>
+                                </div>
+                                
+                            </div>
+                             <div class="row">
+                                 <div class="col-md-4">
+                                  <h5>Email:</h5>
+                                 </div>
+                                 <div class="col-md-4">
+                                  <base-input alternative
+                                            class="mb-2"
+                                            :disabled="dissabled"
+                                            v-model='msg'>
+                                        </base-input>
+                                </div>
+                                
+                            </div>
+                             <div class="row">
+                                 <div class="col-md-4">
+                                  <h5>Contrase;a:</h5>
+                                 </div>
+                                 <div class="col-md-4">
+                                  <base-input alternative
+                                            class="mb-2"
+                                            :disabled="dissabled"
+                                            v-model='msg'>
+                                        </base-input>
+                                </div>
+                                
+                            </div>
                             
-                        </div>
-                        <div class="mt-5 py-5 border-top text-center">
+                            
+                             <base-checkbox v-model="dissabled">
+                                 Editar mis datos 
+                                </base-checkbox>
+ 
+                        </card>
+                            </div>                                                        
+                            <div class="mt-2 py-2 border-top text-center">
                             <div class="row justify-content-center">
-                               <button type="button" class="btn btn-1 btn-success btn-lg"><!----><!----><!---->Nuevo docuemento</button>
-                               <button type="button" class="btn btn-primary btn-lg"@click="login"><!----><!----><!---->historial de docuementos</button>
+                               <button type="button" class="btn btn-1 btn-success btn-lg" @click="$router.push('/categories')"><!----><!----><!---->Ver categorias</button>
+                               <button type="button" class="btn btn-primary btn-lg" @click="login"><!----><!----><!---->historial de docuementos</button>
                                
                             </div>
                         </div>
@@ -60,20 +106,25 @@
                 </card>
             </div>
         </section>
-         <section class="section section-skew">
+         <section class="section section-skew" v-show="visible">
             <div class="container">
-                <card shadow class="card-profile mt--200" no-body>
+                <card shadow class="card-profile mt--100" no-body>
                     <div class="px-4">
                         <div class="row justify-content-center">
-                            
+                            <div class="row justify-content-center">
+                                <div class="col-lg-10">      
+                                      <h3>.:Ultimos documentos:. 
+                                     </h3>
+                                </div>
+                                <div class="col-lg-2">
+                                        <base-button type="danger" size="sm" class="float-right"  @click="visible = !visible">Cerrar</base-button>
+                                </div>
+                                    
+                         </div>
                             <div class="col-lg-12 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                 <div class="row justify-content-center">
-          <div class="text-center mt-5">
-                            <h3>.:Ultimos documentos:. 
-                            </h3>
-                           
-                        </div>
+   
 <div class="row justify-content-center">
           <table class="table table-responsive">
   <thead>
@@ -99,8 +150,6 @@
     </tr>
 
 
- 
-    
   </tbody>
 </table>
 </div>
@@ -123,6 +172,9 @@ export default {
        name: 'app',
        data(){
            return{
+               msg:"sdfsdf",
+               dissabled: true,
+               visible: false,
                 usuarios: [],
            }
           
@@ -132,6 +184,7 @@ export default {
            try{
             let response = await auth.leerAPI();
             this.usuarios = response.data;
+            this.visible=true;
            }catch (error){
                console.log(error);
 

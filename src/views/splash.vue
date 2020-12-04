@@ -68,12 +68,9 @@
                                  </ul>
                              </p>
                                 <div class="text-center">
-                                    <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' @click="login">Iniciar sesion</base-button>
+                                    <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' v-on:click="$router.push('/home')">Iniciar sesion</base-button>
                                 </div>
-                            </form>
-                       
-                    </card>
-                    <div class="row mt-3">
+                                <div class="row mt-3">
                         <div class="col-6">
                             <a href="#" class="text-light">
 
@@ -82,10 +79,14 @@
                         </div>
                         <div class="col-6 text-right">
                             <a href="#" class="text-light">
-                                <router-link to="/logup" class="text-light">Registrate</router-link>
+                                <router-link to="/logup" class="text-success">Registrate</router-link>
                             </a>
                         </div>
+                       
                     </div>
+                            </form>
+                       
+                    </card>
                 </div>
             </div>
         </div>
@@ -105,6 +106,7 @@
 <script>
 import auth from "@/logic/auth";
 export default {
+
      name: 'app',
     data(){
         return{
