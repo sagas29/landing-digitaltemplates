@@ -76,7 +76,7 @@
                             </div>
                              <div class="row">
                                  <div class="col-md-4">
-                                  <h5>Contrase;a:</h5>
+                                  <h5>Contraseña:</h5>
                                  </div>
                                  <div class="col-md-4">
                                   <base-input alternative
@@ -85,13 +85,33 @@
                                             v-model='msg'>
                                         </base-input>
                                 </div>
+                            </div>
+                              <div class="row">
+                                 <div class="col-md-4">
+                                  <h5>Plan actual:</h5>
+                                 </div>
+                                 <div class="col-md-4">
+                                  <base-input alternative
+                                            class="mb-2"
+                                            disabled
+                                            v-model='msg'>
+                                        </base-input>
+                                </div>
+                                <div class="col-md-4">
+                                 <base-button tag="a" href="#" size="sm" type="btn btn-success"  v-show="!dissabled" v-on:click="$router.push('/plans')" class="mt-2">
+                                        Ver planes
+                                    </base-button>
+                                </div>
                                 
                             </div>
                             
                             
                              <base-checkbox v-model="dissabled">
-                                 Editar mis datos 
+                                 Desbloquear mis datos 
                                 </base-checkbox>
+                                 <div class="col-lg-7" v-show="!dissabled">
+                                   <base-button type="success" size="sm" class="float-right" >Guardar cambios</base-button>
+                            </div>
  
                         </card>
                             </div>                                                        
@@ -191,7 +211,10 @@ export default {
            }
         }
 
-       }
+       },
+       beforeCreate() {
+    console.log('No se ha ejecutado nada todavía')
+  }
 };
 </script>
 <style>

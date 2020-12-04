@@ -70,6 +70,12 @@
                                 <div class="text-center">
                                     <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' v-on:click="$router.push('/home')">Iniciar sesion</base-button>
                                 </div>
+
+                             <div class="row justify-content-center mt-3">
+                                <base-alert type="danger" v-show="visible">
+                                    <span class="alert-inner--text"><strong>Error!</strong> Usuario o contraseña incorrectas</span>
+                                </base-alert>
+                            </div>
                                 <div class="row mt-3">
                         <div class="col-6">
                             <a href="#" class="text-light">
@@ -112,6 +118,7 @@ export default {
         return{
              errors:[],
             remember: false,
+            visible:false,
             dissabled: true,
             usuario:null,
             contraseña:null,
