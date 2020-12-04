@@ -68,7 +68,7 @@
                                  </ul>
                              </p>
                                 <div class="text-center">
-                                    <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' v-on:click="$router.push('/home')">Iniciar sesion</base-button>
+                                    <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' v-on:click="login">Iniciar sesion</base-button>
                                 </div>
 
                              <div class="row justify-content-center mt-3">
@@ -155,6 +155,11 @@ export default {
        async login(){
            try{
             await auth.leerAPI();
+            const datos = {
+                user: this.usuario,
+                contra:this.contraseña
+                         };
+            auth.setUserLogged(datos);
             this.$router.push("/home");
            }catch (error){
                console.log(error);

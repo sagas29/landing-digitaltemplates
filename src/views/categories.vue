@@ -98,7 +98,11 @@
                             </div>
                               </card>
                             </div>   
-                                   
+                                   <div class="container mt-5">
+                                      <base-button block type="success" @click="$router.push('/home')">
+                                      Volver a mi perfil
+                                      </base-button>
+                                  </div>
                                                     
                             
                         
@@ -112,7 +116,16 @@
     </section>
 </template>
 <script>
-export default {};
+import auth from "@/logic/auth";
+export default {
+   beforeCreate() {
+               
+      if(!auth.getUserLogged()){
+            this.$router.push("/");
+      }
+     
+  },
+};
 </script>
 <style>
 </style>

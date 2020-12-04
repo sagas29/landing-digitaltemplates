@@ -2,9 +2,9 @@ import Vue from "vue";
 import Router from "vue-router";
 import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
-import Components from "./views/Components.vue";
+
 import splash from "./views/splash.vue";
-import Login from "./views/Login.vue";
+
 import Register from "./views/Register.vue";
 import logup from "./views/logup.vue";
 import edit from "./views/edit.vue";
@@ -26,24 +26,6 @@ export default new Router({
       components: {
         header: AppHeader,
         default: splash,
-        footer: AppFooter
-      }
-    },
-    {
-      path: "/components",
-      name: "components",
-      components: {
-        header: AppHeader,
-        default: Components,
-        footer: AppFooter
-      }
-    },
-    {
-      path: "/login",
-      name: "login",
-      components: {
-        header: AppHeader,
-        default: Login,
         footer: AppFooter
       }
     },

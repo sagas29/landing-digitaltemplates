@@ -107,9 +107,16 @@
     </section>
 </template>
 <script>
-
-
-export default {};
+import auth from "@/logic/auth";
+export default {
+      beforeCreate() {
+               
+      if(!auth.getUserLogged()){
+            this.$router.push("/");
+      }
+     
+  },
+};
 
 
 </script>

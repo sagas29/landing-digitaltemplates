@@ -45,7 +45,7 @@
                                          <li>Milk</li>
                                         </ul> 
                                     <base-button tag="a" href="#" type="btn btn-success" class="mt-5">
-                                        Subscribirse
+                                        {{msg}}
                                     </base-button>
                                 </card>
                              </div> 
@@ -59,7 +59,10 @@
                 </div>
             </div>
             
-   <div class="container mt-5">
+   <div class="container mt-5" v-show="dissabled">
+       <base-button block type="success" @click="$router.push('/')">Volver a inicio</base-button>
+   </div>
+   <div class="container mt-5" v-show="!dissabled">
        <base-button block type="success" @click="$router.push('/home')">Volver a mi perfil</base-button>
    </div>
 
@@ -69,10 +72,32 @@
         </div>
     </section>
  </div>
-</template><script>
+</template>
+<script>
+import auth from "@/logic/auth";
 export default {
   name: "plans",
-  components: {}
+            beforeCreate() {
+      if(!auth.getUserLogged()){
+           
+      }
+     
+  },
+            created() {
+       if(auth.getUserLogged()){
+           this.msg="SUSCRITO"
+           this.dissabled=false
+      }else{
+          this.msg="SUSCRIBIETE"
+      }
+  },
+       data(){
+           return{
+               msg:[],
+               dissabled: true,
+              datosUuario: [],
+           }
+       },
 };
 </script>
 <style>

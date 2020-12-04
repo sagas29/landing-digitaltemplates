@@ -25,12 +25,12 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4">
-                            <h3>Nombre de Usuario </h3>
-                             <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>Pais ,  region</div>
+                        <div class="col-lg-7">
+                            <h3>{{msg}}</h3>
+                           
                         </div> 
-                         <div class="col-lg-5">
-                                   <base-button type="warning" size="sm" class="float-right" @click="$router.push('/')">Salir</base-button>
+                         <div class="col-lg-2">
+                                   <base-button type="warning" size="sm" class="float-right" v-on:click="deleteUserLogged">Salir</base-button>
                             </div>
                         </div>
                         <div class="col-lg-20">
@@ -118,7 +118,7 @@
                             <div class="mt-2 py-2 border-top text-center">
                             <div class="row justify-content-center">
                                <button type="button" class="btn btn-1 btn-success btn-lg" @click="$router.push('/categories')"><!----><!----><!---->Ver categorias</button>
-                               <button type="button" class="btn btn-primary btn-lg" @click="login"><!----><!----><!---->historial de docuementos</button>
+                               <button type="button" class="btn btn-primary btn-lg" @click="getHistorialDocs"><!----><!----><!---->historial de docuementos</button>
                                
                             </div>
                         </div>
@@ -128,7 +128,7 @@
         </section>
          <section class="section section-skew" v-show="visible">
             <div class="container">
-                <card shadow class="card-profile mt--100" no-body>
+                <card shadow class="card-profile mt--100">
                     <div class="px-4">
                         <div class="row justify-content-center">
                             <div class="row justify-content-center">
@@ -190,9 +190,22 @@
 import auth from "@/logic/auth";
 export default {
        name: 'app',
+            beforeCreate() {
+               
+      if(!auth.getUserLogged()){
+            this.$router.push("/");
+      }
+     
+  },
+            created() {
+                
+
+      this.msg = auth.getUserLogged();
+     
+  },
        data(){
            return{
-               msg:"sdfsdf",
+               msg:[],
                dissabled: true,
                visible: false,
                 usuarios: [],
@@ -200,7 +213,7 @@ export default {
           
        },
        methods:{
-              async login(){
+              async getHistorialDocs(){
            try{
             let response = await auth.leerAPI();
             this.usuarios = response.data;
@@ -209,12 +222,15 @@ export default {
                console.log(error);
 
            }
-        }
+        },
+         deleteUserLogged() {
+               this.$router.push("/");
+             return auth.deleteUserLogged();
+          }
+        
 
        },
-       beforeCreate() {
-    console.log('No se ha ejecutado nada todavía')
-  }
+  
 };
 </script>
 <style>
