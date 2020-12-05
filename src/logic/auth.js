@@ -5,6 +5,7 @@ import Cookies from "js-cookie";
 const ENDPOINT_PATH2 = "https://thismyapistest.000webhostapp.com/api/clientes";
 
 export default {
+  //COOKIES///
   setUserLogged(userLogged) {
     Cookies.set("userLogged", userLogged);
   },

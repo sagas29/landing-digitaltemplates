@@ -89,7 +89,7 @@ export default new Router({
       components: {
         header: AppHeader,
         default: detailCategorie,
-        footer: AppFooter
+        //footer: AppFooter
       }
     }
   ],

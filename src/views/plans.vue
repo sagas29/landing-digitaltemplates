@@ -48,17 +48,12 @@
                                         {{msg}}
                                     </base-button>
                                 </card>
-                             </div> 
-                          
-                                 
-                           
-                            
-                                                    
+                             </div>                                                  
                         </div>
                     </div>
                 </div>
             </div>
-            
+
    <div class="container mt-5" v-show="dissabled">
        <base-button block type="success" @click="$router.push('/')">Volver a inicio</base-button>
    </div>
@@ -94,6 +89,7 @@ export default {
        data(){
            return{
                msg:[],
+               modal:true,
                dissabled: true,
               datosUuario: [],
            }
@@ -101,4 +97,5 @@ export default {
 };
 </script>
 <style>
+
 </style>
