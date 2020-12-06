@@ -93,10 +93,10 @@
                                 <small>Vista Previa del documento {{this.$route.params.id}}</small>
                             </div>
                         
-                                <p v-html="this.controls.text"></p>
+                                <p v-html="body"></p>
                         </template>
                         <template>
-                            <a> <button type="button" class="btn btn-warning btn-sm"><!----><!----><!---->Imprimir</button></a>
+                            <a> <button type="button" class="btn btn-warning btn-sm"@click="DocTratamient"><!----><!----><!---->Imprimir</button></a>
                     
                         </template>
                     </card>
@@ -127,7 +127,7 @@ export default {
                    img:''
                },
                controls:{
-                   text:'este es un texto que representa texto planno que formaria cualquier parte no rellenable de cualquier formulario',
+                   text:'<figure class=\"table\"><table><tbody><tr><td><p style=\"text-align:center;\"><i><strong>MODELO DE SOLICITUD DE LEGALIZACIÓN DE LIBROS</strong></i></p><p style=\"text-align:center;\"><i><strong>REGISTRO DE COMERCIO</strong></i></p></td></tr></tbody></table></figure><h2> </h2><h2>SEÑOR REGISTRADOR DE COMERCIO</h2><p><strong>PRESENTE.</strong></p><p> </p><p> </p><p>Yo, ________________________________mayor de edad, del domicilio de________________</p><p>Con DUI Nº___________________________, actuando en calidad de Representante Legal de la Sociedad_______________________________________________________________________</p><p>Inscrita al Nº_________Del Libro __________del Registro de Sociedades, con Credencial inscrita al Nº_________Del Libro___________</p><p>Por este medio solicito la Legalización de los libros que se detallan a continuación:</p><p>DETALLE DE LIBROS</p><p> </p><p>1.-_________________________________________________  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total de hojas___________</p><p>2.-_________________________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total de hojas___________</p><p>3.-_________________________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total de hojas___________</p><p>4.-_________________________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total de hojas___________</p><p>5.-_________________________________________________&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Total de hojas___________</p><p> </p><p>Estos Libros servirán para desarrollar el Sistema de Control Interno de la Sociedad__________________________________________________________________</p><p>Para tal efecto declaro la siguiente información: Matrícula de Empresa Nº______________</p><p>NIT____________________________, Dirección_________________________________</p><p>Teléfono:____________________________.</p><p>Autorizo a :________________________________________________________________</p><p>Para que retire los libros y la documentación que se devuelva.</p><p> </p><p>San Salvador, a los_________________ del mes de____________del año____________</p><p> </p><p>Firma:____________________________</p><p>Representante Legal</p><p> </p><h3>NOTA: De no presentarse personalmente, debe legalizarse la firma por un Notario</h3>',
                    input:'<input type="text" style="border:0"/>',
                    radioB:'<input type="radio" id="huey" name="drone" value="huey">',
                    checkB:'<input type="checkbox" id="cbox1" value="first_checkbox">',
@@ -139,6 +139,17 @@ export default {
           
        },
        methods:{
+           DocTratamient: function(){
+               let original= this.controls.text;
+               let i=0;
+                 while (original.toString().indexOf('texto') != -1){
+                    original=original.replace('texto',this.controls.input)
+                   i++;
+                 }
+                    console.log(i);
+                          console.log(original);
+           // this.body=original;
+           }
 
        }
 };

@@ -2,6 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 
+const ENDPOINT_PATH = "https://digital-templates.herokuapp.com/api/";
 const ENDPOINT_PATH2 = "https://thismyapistest.000webhostapp.com/api/clientes";
 
 export default {
@@ -16,12 +17,34 @@ export default {
     Cookies.remove('userLogged');
   },
   ///API//
-  
+
+  login(email, password) {
+    const user = { email, password };
+    //const headers = { 'Content-Type':'text/plain', 'Access-Control-Allow-Origin':'*'};
+    const headers = { 'Content-Type':'text/plain'}
+    //const headers = {'Access-Control-Allow-Origin':'*'};
+    return axios.post(ENDPOINT_PATH + "auth", user,{headers});
+  },
+
   register(nombre,apellido,telefono) {
     const user = { nombre,apellido,telefono };
-    const headers = { 'Content-Type':'text/plain',};
+    const headers = { 'Content-Type':'text/plain'};
     return axios.post(ENDPOINT_PATH2 + "/nuevo", user,{headers});
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   leerAPI(){
 

@@ -145,6 +145,7 @@ export default {
      
       }else{
            this.dissabled=true;
+           this.visible=false;
       }
 
       },
@@ -153,18 +154,16 @@ export default {
       return re.test(email);
     },
        async login(){
-           try{
-            await auth.leerAPI();
-            const datos = {
-                user: this.usuario,
-                contra:this.contraseña
-                         };
-            auth.setUserLogged(datos);
+             auth.setUserLogged(this.usuario);
+              try {
+        await auth.login(this.usuario, this.contraseña);
+         
             this.$router.push("/home");
-           }catch (error){
-               console.log(error);
-
-           }
+        this.$router.push("/");
+      } catch (error) {
+        this.visible = true;
+        console.log(error);
+      }
         }
 
  }
