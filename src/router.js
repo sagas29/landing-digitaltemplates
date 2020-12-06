@@ -57,6 +57,15 @@ export default new Router({
       }
     },
     {
+      path: "/detailCategorie/edit/:id",
+      name: "edit",
+      components: {
+        header: AppHeader,
+        default: edit,
+        footer: AppFooter
+      }
+    },
+    {
       path: "/home",
       name: "home",
       components: {

@@ -92,10 +92,11 @@
                              <div class="text-center text-muted mb-4">
                                 <small>Vista Previa del documento {{this.$route.params.id}}</small>
                             </div>
-                           
+                        
+                                <p v-html="this.controls.text"></p>
                         </template>
                         <template>
-                                          <a> <button type="button" class="btn btn-warning btn-sm"><!----><!----><!---->Imprimir</button></a>
+                            <a> <button type="button" class="btn btn-warning btn-sm"><!----><!----><!---->Imprimir</button></a>
                     
                         </template>
                     </card>
@@ -116,6 +117,30 @@ export default {
       }
      
   },
+  data(){
+           return{
+               body:'',
+               tags:{
+                    text:'',
+                   input:'',
+                   checkB:'',
+                   img:''
+               },
+               controls:{
+                   text:'este es un texto que representa texto planno que formaria cualquier parte no rellenable de cualquier formulario',
+                   input:'<input type="text" style="border:0"/>',
+                   radioB:'<input type="radio" id="huey" name="drone" value="huey">',
+                   checkB:'<input type="checkbox" id="cbox1" value="first_checkbox">',
+                   img:'<img src="img/brand/icono.png" class="mg-fluid " style="width: 400px">'
+
+
+               }
+           }
+          
+       },
+       methods:{
+
+       }
 };
 
 
