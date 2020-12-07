@@ -26,7 +26,8 @@
                         </div>
 
                         <div class="col-lg-7">
-                            <h3>{{msg}}</h3>
+                            <h3>{{msg.data.nombre}}</h3>
+                             <h3>{{msg.data.apellido}}</h3>
                            
                         </div> 
                          <div class="col-lg-2">
@@ -43,7 +44,7 @@
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
-                                            v-model='msg'>
+                                            v-model='msg.data.nombre'>
                                         </base-input>
                                 </div>
                                 
@@ -56,7 +57,7 @@
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
-                                            v-model='msg'>
+                                            v-model='msg.data.apellido'>
                                         </base-input>
                                 </div>
                                 
@@ -69,7 +70,7 @@
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
-                                            v-model='msg'>
+                                            v-model='msg.data.correo'>
                                         </base-input>
                                 </div>
                                 
@@ -82,7 +83,7 @@
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
-                                            v-model='msg'>
+                                            v-model='msg.data.password'>
                                         </base-input>
                                 </div>
                             </div>
@@ -94,7 +95,7 @@
                                   <base-input alternative
                                             class="mb-2"
                                             disabled
-                                            v-model='msg'>
+                                            v-model='msg.data.estado'>
                                         </base-input>
                                 </div>
                                 <div class="col-md-4">
@@ -110,7 +111,7 @@
                                  Desbloquear mis datos 
                                 </base-checkbox>
                                  <div class="col-lg-7" v-show="!dissabled">
-                                   <base-button type="success" size="sm" class="float-right" >Guardar cambios</base-button>
+                                   <base-button type="success" size="sm" class="float-right" @click="updateData">Guardar cambios</base-button>
                             </div>
  
                         </card>
@@ -126,6 +127,12 @@
                 </card>
             </div>
         </section>
+        
+                             <div class="row justify-content-center mt-3" v-show="ErrVisible">
+                                <base-alert type="danger" >
+                                    <span class="alert-inner--text"><strong>Ha caray!  </strong>Sin documentos disponibles</span>
+                                </base-alert>
+                            </div>
          <section class="section section-skew" v-show="visible">
             <div class="container">
                 <card shadow class="card-profile mt--100">
@@ -133,7 +140,7 @@
                         <div class="row justify-content-center">
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">      
-                                      <h3>.:Ultimos documentos:. 
+                                      <h3>.:Mis documentos:. 
                                      </h3>
                                 </div>
                                 <div class="col-lg-2">
@@ -149,23 +156,25 @@
           <table class="table table-responsive">
   <thead>
     <tr>
-      <th>Título</th>
-      <th>Tipo</th>
-      <th>Categoría</th>
+      <th>Id doc.</th>
+      <th>Id plantilla</th>
+      <th>Titulo</th>
       <th>Fecha creación</th>
+       <th>Fecha edicion</th>
       <th>Acción</th>
     </tr>
   </thead>
   <tbody>
        <tr v-for="(usuario,indice) in usuarios" >
-      <td>{{usuario.id}}</td>
-      <td>{{usuario.nombre}}</td>
+      <td>{{usuario.id_documento}}</td>
+      <td>{{usuario.id_plantilla}}</td>
       <td>{{usuario.apellido}}</td>
-      <td>{{usuario.telefono}}</td>
+      <td>{{usuario.created_at}}</td>
+       <td>{{usuario.updated_at}}</td>
       <td>
-        <a> <button type="button" class="btn btn-warning btn-sm" @click="$router.push('edit/'+ usuario.nombre)"><!----><!----><!---->Editar</button></a>
+        <a> <button type="button" class="btn btn-success btn-sm" @click="$router.push('edit/'+ usuario.id_documento)">Editar</button></a>
       
-        <a> <button type="button" class="btn btn-danger btn-sm"><!----><!----><!---->Eliminar</button></a>
+        <a> <button type="button" class="btn btn-danger btn-sm">Eliminar</button></a>
       </td>
     </tr>
 
@@ -188,6 +197,7 @@
 </template>
 <script>
 import auth from "@/logic/auth";
+import data from "@/logic/data";
 export default {
        name: 'app',
             beforeCreate() {
@@ -198,16 +208,16 @@ export default {
      
   },
             created() {
-                
-
-      this.msg = auth.getUserLogged();
-     
+       
+            this.getData();
   },
        data(){
            return{
                msg:[],
+              
                dissabled: true,
                visible: false,
+               ErrVisible:false,
                 usuarios: [],
            }
           
@@ -215,13 +225,30 @@ export default {
        methods:{
               async getHistorialDocs(){
            try{
-            let response = await auth.leerAPI();
-            this.usuarios = response.data;
+            let response = await data.getMyDocs(auth.getUserLogged());
+                 console.log(auth.getUserLogged());
+            this.usuarios = response.data.data;
             this.visible=true;
+           }catch (error){
+               this.ErrVisible=true;
+
+           }
+        },
+        async getData(){
+           try{
+            let response = await data.getData(auth.getUserLogged());
+            this.msg = response.data;
            }catch (error){
                console.log(error);
 
            }
+        },
+         async updateData(){
+            try{
+            await data.updateData(this.msg.data.id_usuario,this.msg.data.nombre,this.msg.data.apellido,this.msg.data.correo);
+            }catch (error){
+                console.log('error update');
+            }
         },
          deleteUserLogged() {
                this.$router.push("/");

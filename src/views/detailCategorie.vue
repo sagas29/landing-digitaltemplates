@@ -36,35 +36,41 @@
                          </div>
                          <div class="row justify-content-center col-lg-12">
                                 <div class="justify-content-center col-lg-13">      
-                                       <h3>Docuementos en la categoria: {{this.$route.params.id}}
-                                     </h3>
+                                       <h3>Documentos en la categoria:</h3>
+                                     
                                 </div>
+                               
                                
                                     
                          </div>
                             <div class="col-lg-12 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                 <div class="row justify-content-center">
+                              <div class="row justify-content-center mt-3" v-show="Errvisible">
+                                <base-alert type="danger" >
+                                    <span class="alert-inner--text "><strong>Ha caray!  </strong>Sin plantillas disponibles</span>
+                                </base-alert>
+                            </div>
    
-<div class="row justify-content-center">
+<div class="row justify-content-center" v-show="Tvisible">
           <table class="table table-responsive">
   <thead>
     <tr>
       <th>Título</th>
-      <th>Tipo</th>
-      <th>Categoría</th>
+      <th>Descripcion</th>
       <th>Fecha creación</th>
-      <th>Acción</th>
+      <th>Fecha actualizacion</th>
+      <th>Acciónes</th>
     </tr>
   </thead>
   <tbody>
        <tr v-for="(usuario,indice) in usuarios" >
-      <td>{{usuario.id}}</td>
-      <td>{{usuario.nombre}}</td>
-      <td>{{usuario.apellido}}</td>
-      <td>{{usuario.telefono}}</td>
+      <td>{{usuario.titulo}}</td>
+      <td>{{usuario.descripcion}}</td>
+      <td>{{usuario.created_at}}</td>
+      <td>{{usuario.updated_at}}</td>
       <td>
-        <a> <button type="button" class="btn btn-primary btn-sm" @click="$router.push('edit/'+ usuario.nombre)"><!----><!----><!---->Abrir</button></a>
+        <a> <button type="button" class="btn btn-primary btn-sm" @click="$router.push('edit/'+ usuario.nombre)">Abrir</button></a>
       </td>
     </tr>
 
@@ -87,6 +93,7 @@
 </template>
 <script>
 import auth from "@/logic/auth";
+import content from "@/logic/content";
 export default {
    beforeCreate() {
                
@@ -96,23 +103,35 @@ export default {
      
   },
    created() {
-     this.getHistorialDocs();
+     this.getListCat();
+     
    },
   data(){
            return{            
                 usuarios: [],
-                visible:false
+                categorias:[
+                  "Doc.Juridicos",
+                  "Doc.contaduria",
+                  "Doc.Empleo",
+                  "Doc.Incripcion de empresas"   
+               ],
+               index:'',
+                Tvisible:false,
+                Errvisible:false
            }
           
        },
        methods:{
-             async getHistorialDocs(){
+             async getListCat(){
            try{
-            let response = await auth.leerAPI();
-            this.usuarios = response.data;
-            this.visible=true;
+            let response = await content.getListCat(this.$route.params.id);
+            this.usuarios = response.data.data;
+           
+            this.Tvisible=true;
+            
            }catch (error){
                console.log(error);
+               this.Errvisible=true;
 
            }
         },

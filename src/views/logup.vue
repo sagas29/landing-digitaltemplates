@@ -44,6 +44,24 @@
                                             id="input-field"
                                             v-on:keyup="checkForm">
                                 </base-input>
+
+                                 <base-input alternative
+                                            class="mb-2"
+                                            placeholder="Telefono"
+                                            addon-left-icon="ni ni-circle-08"
+                                            v-model="datosP.telefono"
+                                            v-on:keyup="checkForm">
+                                           
+                                </base-input>
+                             
+                                <base-input alternative
+                                            class="mb-2"
+                                            placeholder="Direccion"
+                                            addon-left-icon="ni ni-circle-08"
+                                            v-model="datosP.direccion"
+                                            id="input-field"
+                                            v-on:keyup="checkForm">
+                                </base-input>
                                
                                 <base-input alternative
                                             class="mb-2"
@@ -94,6 +112,7 @@
  </div>
 </template>
 <script>
+
 import auth from "@/logic/auth";
 export default {
      name: 'app',
@@ -105,6 +124,8 @@ export default {
         datosP:{
             nombre:'',
             apellido:'',
+            telefono:'',
+            direccion:'',
             email:'',
             contraseña:'',
             cofirmacion:''
@@ -122,6 +143,13 @@ export default {
        }
        if (!this.datosP.apellido) {
         this.errors.push('apellido necesaria');
+       }
+        if (!this.datosP.telefono) {
+         this.errors.push('telefono necesario');
+         this.$appName="mi app";
+       }
+       if (!this.datosP.direccion) {
+        this.errors.push('direccion necesaria');
        }
        if (!this.datosP.email) {
         this.errors.push('email necesaria');
@@ -163,7 +191,7 @@ export default {
     },
         async register (){
             try{
-            await auth.register(this.datosP.nombre,this.datosP.apellido,this.datosP.email);
+            await auth.register(this.datosP.nombre,this.datosP.apellido,this.datosP.telefono,this.datosP.direccion,this.datosP.email,this.datosP.contraseña);
             }catch (error){
                 console.log(error);
             }

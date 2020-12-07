@@ -36,7 +36,7 @@
                                         every summer, and that process will continue whatever happens.</p>
                                    
                                       <base-button tag="a" href="#" type="btn btn-primary" class="mt-2"
-                                      @click="$router.push('/detailCategorie/Doc.Juridicos')">
+                                      @click="$router.push('/detailCategorie/2')">
                                         Ver documentos
                                     </base-button>
                                 </div>
@@ -55,7 +55,7 @@
                                         every summer, and that process will continue whatever happens.</p>
                                   
                                       <base-button tag="a" href="#" type="btn btn-success" class="mt-2"
-                                       @click="$router.push('/detailCategorie/Doc.contaduria')">
+                                       @click="$router.push('/detailCategorie/1')">
                                          Ver documentos
                                     </base-button>
                                 </div>
@@ -73,7 +73,7 @@
                                         every summer, and that process will continue whatever happens.</p>
                                     
                                       <base-button tag="a" href="#" type="btn btn-warning" class="mt-2"
-                                           @click="$router.push('/detailCategorie/Doc.Empleo')">
+                                           @click="$router.push('/detailCategorie/4')">
                                          Ver documentos
                                     </base-button>
                                 </div>
@@ -91,7 +91,7 @@
                                         every summer, and that process will continue whatever happens.</p>
                                    
                                       <base-button tag="a" href="#" type="btn btn-danger" class="mt-2"
-                                        @click="$router.push('/detailCategorie/Doc.Incripcion de empresas')">
+                                        @click="$router.push('/detailCategorie/3')">
                                          Ver documentos
                                     </base-button>
                                 </div>

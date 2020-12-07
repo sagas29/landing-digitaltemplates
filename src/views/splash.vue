@@ -117,11 +117,13 @@ export default {
     data(){
         return{
              errors:[],
+             usuarios:[],
             remember: false,
             visible:false,
             dissabled: true,
             usuario:null,
             contraseña:null,
+            id:''
          
         }
     },
@@ -154,12 +156,11 @@ export default {
       return re.test(email);
     },
        async login(){
-             auth.setUserLogged(this.usuario);
-              try {
-        await auth.login(this.usuario, this.contraseña);
-         
-            this.$router.push("/home");
-        this.$router.push("/");
+         try {
+         let response = await auth.login(this.usuario, this.contraseña);
+            this.usuarios=response.data;
+            auth.setUserLogged(this.usuarios.data.id_usuario);   
+        this.$router.push("/home");
       } catch (error) {
         this.visible = true;
         console.log(error);
