@@ -70,7 +70,7 @@
       <td>{{usuario.created_at}}</td>
       <td>{{usuario.updated_at}}</td>
       <td>
-        <a> <button type="button" class="btn btn-primary btn-sm" @click="$router.push('edit/'+ usuario.nombre)">Abrir</button></a>
+        <a> <button type="button" class="btn btn-primary btn-sm" @click="$router.push('newDoc/'+ usuario.id_plantilla)">Abrir</button></a>
       </td>
     </tr>
 

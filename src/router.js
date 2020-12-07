@@ -12,6 +12,7 @@ import home from "./views/home.vue";
 import plans from "./views/plans.vue";
 import categories from "./views/categories.vue";
 import detailCategorie from "./views/detailCategorie.vue";
+import newDoc from "./views/newDoc.vue";
 
  
 
@@ -99,6 +100,15 @@ export default new Router({
         header: AppHeader,
         default: detailCategorie,
         //footer: AppFooter
+      }
+    },
+    {
+      path: "/detailCategorie/newDoc/:id",
+      name: "newDoc",
+      components: {
+        header: AppHeader,
+        default: newDoc,
+        footer: AppFooter
       }
     }
   ],

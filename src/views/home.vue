@@ -159,6 +159,7 @@
       <th>Id doc.</th>
       <th>Id plantilla</th>
       <th>Titulo</th>
+       <th>Descripcion</th>
       <th>Fecha creación</th>
        <th>Fecha edicion</th>
       <th>Acción</th>
@@ -168,7 +169,8 @@
        <tr v-for="(usuario,indice) in usuarios" >
       <td>{{usuario.id_documento}}</td>
       <td>{{usuario.id_plantilla}}</td>
-      <td>{{usuario.apellido}}</td>
+      <td>{{usuario.titulo}}</td>
+      <td>{{usuario.descripcion}}</td>
       <td>{{usuario.created_at}}</td>
        <td>{{usuario.updated_at}}</td>
       <td>

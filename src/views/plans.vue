@@ -31,25 +31,29 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
-                        <div class="row row-grid">
-                            <div class="col-lg-4">
+                        <div class="row row-grid justify-content-center">
+                            <div class="col-lg-6" v-for="(datosPlan,indice) in datosPlan">
                                 <card class="border-0" hover shadow body-classes="py-5">
-                                     <h1 class="heading mb-5">Nombre del plan</h1>
+                                     <h1 class="heading-1 mb-5 text-success">{{datosPlan.nombre}}</h1>
+                                    
                                     <div>
-                                         <h1 class="display2 mb-0">$ 19.99</h1>
-                                         <a>/mes.</a>
+                                        
+                                         <a >Duracion en meses:{{datosPlan.vigencia_meses}}</a>
                                     </div>
-                                        <ul>
-                                         <li>Coffee</li>
-                                         <li>Tea</li>
-                                         <li>Milk</li>
-                                        </ul> 
+                                    <div>
+                                         <p class="mb-4" align="justify">{{datosPlan.descripcion}}</p>
+
+                                    </div>
+                                        <h1 class="display2 mb-3">${{datosPlan.precio}}</h1>
                                     <base-button tag="a" href="#" type="btn btn-success" class="mt-5">
                                         {{msg}}
                                     </base-button>
                                 </card>
-                             </div>                                                  
+                                
+                             </div>      
+                                                                          
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -70,6 +74,7 @@
 </template>
 <script>
 import auth from "@/logic/auth";
+import content from "@/logic/content";
 export default {
   name: "plans",
             beforeCreate() {
@@ -79,6 +84,7 @@ export default {
      
   },
             created() {
+                this.getPlans();
        if(auth.getUserLogged()){
            this.msg="SUSCRITO"
            this.dissabled=false
@@ -91,9 +97,20 @@ export default {
                msg:[],
                modal:true,
                dissabled: true,
-              datosUuario: [],
+              datosPlan: [],
            }
        },
+       methods:{
+             async getPlans(){
+           try{
+            let response = await content.getPlans();
+            this.datosPlan = response.data.data;
+           }catch (error){
+               console.log(error);
+
+           }
+        },
+       }
 };
 </script>
 <style>
