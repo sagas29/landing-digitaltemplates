@@ -31,5 +31,10 @@ export default {
             const headers = { 'Content-Type':'text/plain'};
             return axios.post(ENDPOINT_PATH + "documentos", registro,{headers});
             },
+            
+deleteMyDoc(id_documento){
+        const headers = { 'Content-Type':'text/plain'};
+        return axios.delete(ENDPOINT_PATH+"documentos/"+id_documento,{headers});
+}
 
     };

@@ -124,6 +124,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </card>
             </div>
         </section>
@@ -133,10 +134,26 @@
                                     <span class="alert-inner--text"><strong>Ha caray!  </strong>Sin documentos disponibles</span>
                                 </base-alert>
                             </div>
+
+
+                            
          <section class="section section-skew" v-show="visible">
             <div class="container">
-                <card shadow class="card-profile mt--100">
+                <card shadow class="card-profile mt--500">
                     <div class="px-4">
+
+                            <div class="row justify-content-center mt-1" v-for="(alerts,indice) in alerts">
+                               
+                                <base-alert type="danger" class="col-lg-12" dismissible>
+                                     <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+                                     <span class="alert-inner--text"><strong>Listo!</strong> Documento eliminado! </span>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </base-alert>
+                            </div>
+                            
+                        
                         <div class="row justify-content-center">
                             <div class="row justify-content-center">
                                 <div class="col-lg-10">      
@@ -148,6 +165,8 @@
                                 </div>
                                     
                          </div>
+                         
+                         
                             <div class="col-lg-12 order-lg-1">
                                 <div class="card-profile-stats d-flex justify-content-center">
                                 <div class="row justify-content-center">
@@ -176,7 +195,7 @@
       <td>
         <a> <button type="button" class="btn btn-success btn-sm" @click="$router.push('edit/'+ usuario.id_documento)">Editar</button></a>
       
-        <a> <button type="button" class="btn btn-danger btn-sm">Eliminar</button></a>
+        <a> <button type="button" class="btn btn-danger btn-sm"  @click="deleteMyDoc(usuario.id_documento)">Eliminar {{usuario.id_documento}}</button></a>
       </td>
     </tr>
 
@@ -200,6 +219,7 @@
 <script>
 import auth from "@/logic/auth";
 import data from "@/logic/data";
+import content from "@/logic/content";
 export default {
        name: 'app',
             beforeCreate() {
@@ -216,19 +236,20 @@ export default {
        data(){
            return{
                msg:[],
-              
+               alerts:[],
+               usuarios:[],
                dissabled: true,
                visible: false,
                ErrVisible:false,
-                usuarios: [],
+               DelVisible:false,
+               id_documento:''
            }
           
        },
        methods:{
               async getHistorialDocs(){
            try{
-            let response = await data.getMyDocs(auth.getUserLogged());
-                 console.log(auth.getUserLogged());
+            let response = await data.getMyDocs(auth.getUserLogged());      
             this.usuarios = response.data.data;
             this.visible=true;
            }catch (error){
@@ -250,6 +271,18 @@ export default {
             await data.updateData(this.msg.data.id_usuario,this.msg.data.nombre,this.msg.data.apellido,this.msg.data.correo);
             }catch (error){
                 console.log('error update');
+            }
+        },
+         async deleteMyDoc(id_documento){
+
+             console.log("eliminar"+id_documento);
+         
+            try{
+            await content.deleteMyDoc(id_documento);
+                this.alerts.push(id_documento);
+            this.getHistorialDocs();
+            }catch (error){
+                console.log('error delete');
             }
         },
          deleteUserLogged() {
