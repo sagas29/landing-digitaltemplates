@@ -88,9 +88,16 @@
                             
                                
                                 <div class="text-center">
-                                    <base-button type="primary" class="my-4" :disabled='dissabled' @click="register">Crear el docuemnto</base-button>
+                                    <base-button type="primary" class="my-4" :disabled='dissabled' @click="register">Crear el documento</base-button>
                                                                </div>
-                                 <router-link to="/" class="text-success">*Nah en otro momento</router-link>
+                                 <router-link to="/home" class="text-success">*Nah en otro momento</router-link>
+
+                             <div class="row justify-content-center mt-3" v-show="visible">
+                                <base-alert type="danger" >
+                                    <span class="alert-inner--text"><strong>Upps!  </strong>Hubo un error inesperado,porfavor intente de nuevo</span>
+                                </base-alert>
+                            </div>
+                            
                             </form>
                         </template>
                     </card>
@@ -172,6 +179,7 @@ export default {
             await content.register(this.datosD.id_plantilla,this.datosD.id_usuario,this.datosD.titulo,this.datosD.descripcion,this.body.contenido,this.etiquetas);
             }catch (error){
                 console.log(error);
+                this.visible=true;
             }
 
         }

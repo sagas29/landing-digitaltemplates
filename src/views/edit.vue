@@ -13,18 +13,50 @@
         <div class="container">
             <div class="row justify-content-center mt-0">
               
-                 <div class="col-lg-10">
+                 <div class="col-lg-12">
                     <card type="secondary" shadow
                           header-classes="bg-gray pb-5"
-                          body-classes="px-lg-7 py-lg-5"
-                          class="border-0">
+                          body-classes="px-lg-10 py-lg-10"
+                          class="border-0 text-center">
                          <template>
-                             <div class="text-center text-muted mb-4">
-                                <small>Vista Previa del documento {{this.$route.params.id}}</small>
-                            </div>
-                             <div class="text-center text-muted mb-4">
-                              <p v-html="body.contenido"></p>
-                            </div>
+                        <div class="pb-2 ">
+                          <div class="row col-lg-12">
+                              
+                              <div class="col-md-3 "> 
+                             <span class="badge badge-primary">Nombre del documento:</span>
+                             </div> 
+                             
+
+                              <div class="col-md-8" >
+                               <u>{{this.body.titulo}}</u>
+                              </div>
+                              <div class="col-md-1 pt-2" >
+                              <a> <button type="button" class="btn btn-danger btn-sm" @click="$router.push('/home')"><!----><!----><!---->Cerrar </button></a>
+                              </div>
+                              
+                          </div>
+                          <div class="row col-lg-12">
+                              <div class="col-md-3"> 
+                           <span class="badge badge-primary">Descripcion del documento:</span>
+                             </div>
+                             
+
+                              <div class="col-md-8" >
+                               <u>{{this.body.descripcion}}</u>
+                              </div>
+                              <div class="col-md-1 pt-2" >
+                               <a> <button type="button" class="btn btn-success btn-sm" @click="DocTratamient"><!----><!----><!---->Guardar</button></a>
+                              </div>
+                              
+                          </div>
+                        </div> 
+                           
+                           <div class="col-lg-12 marco" >
+                          
+                              <div class="doc col-lg-10" v-html="body.contenido"></div>
+                         
+                           </div>
+                    
                         </template>
                         <template>
                             <a> <button type="button" class="btn btn-warning btn-sm" @click="DocTratamient"><!----><!----><!---->Imprimir</button></a>
@@ -103,4 +135,16 @@ export default {
 
 </script>
 <style>
+.doc{
+border: rgb(0, 0, 0) 1px solid;
+margin:0px auto;
+border-radius: 10px;
+background-color: rgb(255, 255, 255);
+
+}
+.marco{
+    border: rgb(135, 38, 38) 1px solid;
+    background-color: rgb(196, 196, 196);
+    border-radius: 10px;
+}
 </style>
