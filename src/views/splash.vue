@@ -49,18 +49,18 @@
                                             placeholder="Email"
                                             addon-left-icon="ni ni-email-83"
                                             v-model="usuario"
-                                            v-on:keyup="checkForm">
+                                            v-on:keyup="checkForm"
+                                            v-on:click="checkForm">
                                 </base-input>
                                 <base-input alternative
                                             type="password"
                                             placeholder="Contraseña"
                                             addon-left-icon="ni ni-lock-circle-open"
                                             v-model="contraseña"
-                                            v-on:keyup="checkForm">
+                                            v-on:keyup="checkForm"
+                                            v-on:click="checkForm">
                                 </base-input>
-                                <base-checkbox v-model="remember">
-                                 Recuerdame
-                                </base-checkbox>
+                               
                             <p v-if="errors.length">
                              <b>Por favor, corrija el(los) siguiente(s) error(es):</b>
                                 <ul>
@@ -68,7 +68,7 @@
                                  </ul>
                              </p>
                                 <div class="text-center">
-                                    <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' v-on:click="login">Iniciar sesion</base-button>
+                                    <base-button type="button" class="btn btn-1 btn-success" :disabled='dissabled' v-on:click="login">Iniciar sesión</base-button>
                                 </div>
 
                              <div class="row justify-content-center mt-3">
@@ -77,13 +77,8 @@
                                 </base-alert>
                             </div>
                                 <div class="row mt-3">
-                        <div class="col-6">
-                            <a href="#" class="text-light">
-
-                                <router-link to="/" class="text-light">Olvidaste tu Contraseña?</router-link>
-                            </a> 
-                        </div>
-                        <div class="col-6 text-right">
+                       
+                        <div class="col-12 text-right">
                             <a href="#" class="text-light">
                                 <router-link to="/logup" class="text-success">Registrate</router-link>
                             </a>
