@@ -13,6 +13,8 @@ import plans from "./views/plans.vue";
 import categories from "./views/categories.vue";
 import detailCategorie from "./views/detailCategorie.vue";
 import newDoc from "./views/newDoc.vue";
+import newPass from "./views/newPass.vue";
+
 
  
 
@@ -36,6 +38,15 @@ export default new Router({
       components: {
         header: AppHeader,
         default: Register,
+        footer: AppFooter
+      }
+    },
+    {
+      path: "/newPass",
+      name: "newPass",
+      components: {
+        header: AppHeader,
+        default: newPass,
         footer: AppFooter
       }
     },

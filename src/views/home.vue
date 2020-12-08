@@ -31,16 +31,16 @@
                            
                         </div> 
                          <div class="col-lg-2">
-                                   <base-button type="warning" size="sm" class="float-right" v-on:click="deleteUserLogged">Salir</base-button>
+                                   <base-button type="warning" size="md" class="float-right" v-on:click="deleteUserLogged">cerrar sesion</base-button>
                             </div>
                         </div>
                         <div class="col-lg-20">
                         <card shadow class="shadow-lg--hover mt-3" >
                             <div class="row">
-                                 <div class="col-md-4">
+                                 <div class="col-md-2">
                                   <h5>Nombre:</h5>
                                  </div>
-                                 <div class="col-md-8">
+                                 <div class="col-md-4">
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
@@ -50,10 +50,10 @@
                                 
                             </div>
                              <div class="row">
-                                 <div class="col-md-4">
+                                 <div class="col-md-2">
                                   <h5>Apellido:</h5>
                                  </div>
-                                 <div class="col-md-8">
+                                 <div class="col-md-4">
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
@@ -63,7 +63,7 @@
                                 
                             </div>
                              <div class="row">
-                                 <div class="col-md-4">
+                                 <div class="col-md-2">
                                   <h5>Email:</h5>
                                  </div>
                                  <div class="col-md-4">
@@ -76,8 +76,8 @@
                                 
                             </div>
                              <div class="row">
-                                 <div class="col-md-4">
-                                  <h5>Contraseña:</h5>
+                                 <div class="col-md-2">
+                                  <h5>Contraseña</h5>
                                  </div>
                                  <div class="col-md-4">
                                   <base-input alternative
@@ -86,9 +86,14 @@
                                             v-model='msg.data.password'>
                                         </base-input>
                                 </div>
+                                 <div class="col-md-2">
+                                 <base-button tag="a" href="#" size="sm" type="btn btn-alert"  v-show="!dissabled" v-on:click="$router.push('/newPass')" class="mt-2">
+                                        Cambiar Contraseña
+                                    </base-button>
+                                </div>
                             </div>
                               <div class="row">
-                                 <div class="col-md-4">
+                                 <div class="col-md-2">
                                   <h5>Plan actual:</h5>
                                  </div>
                                  <div class="col-md-4">
@@ -98,20 +103,21 @@
                                             v-model='msg.data.estado'>
                                         </base-input>
                                 </div>
-                                <div class="col-md-4">
-                                 <base-button tag="a" href="#" size="sm" type="btn btn-success"  v-show="!dissabled" v-on:click="$router.push('/plans')" class="mt-2">
+                                <div class="col-md-2">
+                                 <base-button tag="a" href="#" size="sm" type="btn btn-alert"  v-show="!dissabled" v-on:click="$router.push('/plans')" class="mt-2">
                                         Ver planes
                                     </base-button>
                                 </div>
+                                
                                 
                             </div>
                             
                             
                              <base-checkbox v-model="dissabled">
-                                 Desbloquear mis datos 
+                                 Datos bloqueados 
                                 </base-checkbox>
                                  <div class="col-lg-7" v-show="!dissabled">
-                                   <base-button type="success" size="sm" class="float-right" @click="updateData">Guardar cambios</base-button>
+                                   <base-button type="success" size="md" class="float-right" @click="updateData">Guardar cambios</base-button>
                             </div>
  
                         </card>
@@ -139,7 +145,7 @@
                             
          <section class="section section-skew" v-show="visible">
             <div class="container">
-                <card shadow class="card-profile mt--500">
+                <card shadow class="card-profile mt--100">
                     <div class="px-4">
 
                             <div class="row justify-content-center mt-1" v-for="(alerts,indice) in alerts">

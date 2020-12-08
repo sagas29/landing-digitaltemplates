@@ -3,7 +3,6 @@ import Cookies from "js-cookie";
 
 
 const ENDPOINT_PATH = "https://digital-templates.herokuapp.com/api/";
-const ENDPOINT_PATH2 = "https://thismyapistest.000webhostapp.com/api/clientes";
 
 export default {
   //COOKIES///
@@ -30,6 +29,11 @@ export default {
     const user = { nombre,apellido,telefono,direccion,correo,password };
     const headers = { 'Content-Type':'text/plain'};
     return axios.post(ENDPOINT_PATH + "/registro", user,{headers});
+  },
+  registerNewPass(id_usuario,antigua_password,nueva_password) {
+    const credentials = { id_usuario,antigua_password,nueva_password};
+    const headers = { 'Content-Type':'text/plain'};
+    return axios.post(ENDPOINT_PATH + "usuarios", credentials,{headers});
   },
 
 

@@ -130,7 +130,14 @@ export default {
             visible:false,
         body:[],
          tags:[],
-         etiquetas:[],
+         etiquetas:[
+
+             {
+              etiqueta :"lbl_nombre",
+              valor: "Jua Perez"
+             }
+              
+         ],
         errors:[],
         datosD:{
             titulo:'',
@@ -176,7 +183,7 @@ export default {
  
         async register (){
             try{
-            await content.register(this.datosD.id_plantilla,this.datosD.id_usuario,this.datosD.titulo,this.datosD.descripcion,this.body.contenido,this.etiquetas);
+            await content.register(this.datosD.id_plantilla,this.datosD.id_usuario,this.datosD.titulo,this.datosD.descripcion,this.body.contenido);
             }catch (error){
                 console.log(error);
                 this.visible=true;

@@ -25,9 +25,15 @@ export default {
    
             return axios.get(ENDPOINT_PATH+"planes");
                },
-   register(id_plantilla,id_usuario,titulo,descripcion,contenido,tags) {
-            const registro = { id_plantilla,id_usuario,titulo,descripcion,contenido,etiquetas};
-            const etiquetas=[tags];
+   register(id_plantilla,id_usuario,titulo,descripcion,contenido) {
+          
+            const etiquetas=[  
+                    {
+                etiqueta :"lbl_nombre",
+                valor: "Jua Perez"
+               }
+        ];
+        const registro = { id_plantilla,id_usuario,titulo,descripcion,contenido,etiquetas};
             const headers = { 'Content-Type':'text/plain'};
             return axios.post(ENDPOINT_PATH + "documentos", registro,{headers});
             },

@@ -12,7 +12,7 @@ export default {
   ////X////
   updateData(id_usuario,nombre,apellido,correo) {
     const user = { nombre,apellido,correo };
-    const headers = { 'Content-Type':'text/plain','Access-Control-Allow-Origin': '*'};
+    const headers = { 'Content-Type':'text/plain'};
     return axios.put(ENDPOINT_PATH +"usuarios/"+id_usuario, user,{headers});
   },
   
