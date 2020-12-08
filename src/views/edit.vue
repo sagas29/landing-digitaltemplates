@@ -49,17 +49,35 @@
                               </div>
                               
                           </div>
+                          
+                            <div class="row col-lg-12">
+                              <div class="col-md-2"> 
+                           <span class="badge badge-primary">Creado el:</span>
+                             </div>
+                             
+
+                              <div class="col-md-4" >
+                               <u>{{this.body.created_at}}</u>
+                              </div>
+                                 <div class="col-md-2"> 
+                           <span class="badge badge-primary">Editado el:</span>
+                             </div>
+                              <div class="col-md-4" >
+                               <u>{{this.body.updated_at}}</u>
+                              </div>
+                              
+                          </div>
                         </div> 
                            
                            <div class="col-lg-12 marco" >
                           
-                              <div class="doc col-lg-10" v-html="body.contenido"></div>
+                              <div class="doc col-lg-10" v-html="this.docTrated"></div>
                          
                            </div>
                     
                         </template>
                         <template>
-                            <a> <button type="button" class="btn btn-warning btn-sm" @click="DocTratamient"><!----><!----><!---->Imprimir</button></a>
+                            <a> <button type="button" class="btn btn-warning btn-sm" @click="DocTratamient"><!----><!----><!---->Procesar</button></a>
                     
                         </template>
                     </card>
@@ -83,11 +101,20 @@ export default {
   },
       created() {
       this.getEditMydoc();
+      
   },
   data(){
            return{
                body:[],
                tags:[],
+               docTrated:'',
+               tagOptions:'',
+               msg:'hola',
+              
+               inicio:0,
+               fin:'',
+               tag:'',
+
                tags:{
                     text:'',
                    input:'',
@@ -95,8 +122,8 @@ export default {
                    img:''
                },
                controls:{
-                   text:'',
-                   input:'<input type="text" style="border:0"/>',
+                   text:' <img src="img/brand/icono.png" class="mg-fluid " x style="width: 400px">',
+                   input:'<input type="text" value="XXX"style="border:1"/>',
                    radioB:'<input type="radio" id="huey" name="drone" value="huey">',
                    checkB:'<input type="checkbox" id="cbox1" value="first_checkbox">',
                    img:'<img src="img/brand/icono.png" class="mg-fluid " style="width: 400px">'
@@ -108,21 +135,32 @@ export default {
        },
        methods:{
            DocTratamient: function(){
-               let original= this.controls.text;
-               let i=0;
-                 while (original.toString().indexOf('texto') != -1){
-                    original=original.replace('texto',this.controls.input)
-                   i++;
-                 }
-                    console.log(i);
-                          console.log(original);
-         
+               let original= this.docTrated;
+                let re =/###/g;
+                let sub="###";
+               
+               console.log(original.length);
+                 
+                    this.inicio=original.indexOf(sub,this.inicio)
+                     this.fin=original.indexOf(sub,this.inicio+3)     
+                          this.tagOptions=original.substring(this.inicio+3,this.fin);
+                    console.log(this.inicio + "hasta" + this.fin );
+                     console.log(this.tagOptions );
+                    let tagWithVal= this.controls.input.replace('XXX',this.tags[0].valor)
+
+                       let result=original.replace('###'+this.tagOptions+'###',tagWithVal)
+            this.inicio=this.fin+3;
+            this.docTrated=result;
+            console.log(result.length);
            },
+
+
             async  getEditMydoc(){
            try{
             let response = await content.getEditMydoc(this.$route.params.id);
             this.body = response.data.data;
               this.tags = response.data.etiquetas;
+              this.docTrated=this.body.contenido;
            }catch (error){
               console.log(error);
 

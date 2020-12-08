@@ -1,10 +1,10 @@
 <template>
     <footer class="footer has-cards">
       
-        <div class="container">
+        <div class="container ">
             <div class="row row-grid align-items-center my-md">
                 <div class="col-lg-6">
-                    <h3 class="text-primary font-weight-light mb-2">Buscanos en:</h3>
+                    <h3 class="text-primary font-weight-light mb-4">Buscanos en:</h3>
 
                 </div>
                 <div class="col-lg-6 text-lg-center btn-wrapper">

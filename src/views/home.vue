@@ -11,9 +11,9 @@
                 <span></span>
             </div>
         </section>
-        <section class="section-profile-cover section-shaped my-0">
+        <section class="section-profile-cover section-shaped my-0 mt--300">
             <div class="container">
-                <card shadow class="card-profile mt--300">
+                <card shadow class="card-profile ">
                     <div class="px-0">
                         <div class="row">
 
