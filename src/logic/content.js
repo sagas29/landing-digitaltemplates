@@ -25,14 +25,9 @@ export default {
    
             return axios.get(ENDPOINT_PATH+"planes");
                },
-   register(id_plantilla,id_usuario,titulo,descripcion,contenido) {
+   register(id_plantilla,id_usuario,titulo,descripcion,contenido,etiquetas) {
           
-            const etiquetas=[  
-                    {
-                etiqueta :"lbl_nombre",
-                valor: "Jua Perez"
-               }
-        ];
+           
         const registro = { id_plantilla,id_usuario,titulo,descripcion,contenido,etiquetas};
             const headers = { 'Content-Type':'text/plain'};
             return axios.post(ENDPOINT_PATH + "documentos", registro,{headers});
@@ -40,7 +35,8 @@ export default {
             
 deleteMyDoc(id_documento){
         const headers = { 'Content-Type':'text/plain'};
-        return axios.delete(ENDPOINT_PATH+"documentos/"+id_documento,{headers});
+        const id = { id_documento };
+        return axios.post(ENDPOINT_PATH+"documentos_eliminar/"+id_documento,{headers});
 }
 
     };

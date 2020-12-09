@@ -183,7 +183,7 @@ export default {
  
         async register (){
             try{
-            await content.register(this.datosD.id_plantilla,this.datosD.id_usuario,this.datosD.titulo,this.datosD.descripcion,this.body.contenido);
+            await content.register(this.datosD.id_plantilla,this.datosD.id_usuario,this.datosD.titulo,this.datosD.descripcion,this.body.contenido,this.etiquetas);
             }catch (error){
                 console.log(error);
                 this.visible=true;
