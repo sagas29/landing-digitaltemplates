@@ -43,7 +43,7 @@ export default new Router({
       path: "/logup",
       name: "logup",
       components: {
-        header: AppHeader,
+       // header: AppHeader,
         default: logup,
         footer: AppFooter
       }
