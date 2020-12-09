@@ -103,6 +103,7 @@ export default {
     data(){
         return{
              errors:[],
+             msg:[],
              antigua:'',
             visible:false,
             dissabled: true,
@@ -137,11 +138,12 @@ export default {
        async registerNewPass(){
          try {
          let response = await auth.registerNewPass(auth.getUserLogged(),this.antigua, this.nueva);
-           
+           this.msg=response.message;
               
         this.$router.push("/home");
       } catch (error) {
         this.visible = true;
+        this.msg=response.message;
         console.log(error);
       }
         }
