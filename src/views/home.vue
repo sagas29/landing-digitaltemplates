@@ -201,7 +201,7 @@
       <td>
         <a> <button type="button" class="btn btn-success btn-sm" @click="$router.push('edit/'+ usuario.id_documento)">Editar</button></a>
       
-       <!-- <a> <button type="button" class="btn btn-danger btn-sm"  @click="deleteMyDoc(usuario.id_documento)">Eliminar {{usuario.id_documento}}</button></a>-->
+     <a> <button type="button" class="btn btn-danger btn-sm"  @click="deleteMyDoc(usuario.id_documento)">Eliminar {{usuario.id_documento}}</button></a>
       </td>
     </tr>
 

@@ -108,6 +108,19 @@
                                     </button>
                                  </base-alert>
                             </div>
+
+                             <div class="row justify-content-center mt-1" v-for="(success,indice) in success">
+                               
+                                <base-alert type="success" class="col-lg-12" dismissible>
+                                     <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+                                     <span class="alert-inner--text"><strong>Genial!</strong> Documento actualizado !!!!!</span>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </base-alert>
+                            </div>
+
+
                         
                     </card>
                 </div>
@@ -150,6 +163,7 @@ export default {
            return{
                visible:false,
                alerts:[],
+               success:[],
                body:[],
                tags:[],
                inputs:[],
@@ -218,6 +232,7 @@ export default {
                  async DocActuSend (){
             try{
             await content.registerDocActu(this.body.id_documento,this.body.titulo,this.body.descripcion,this.body.contenido,this.inputs);
+              this.success.push("ok");
             }catch (error){
                 console.log(error);
                  this.alerts.push(error);

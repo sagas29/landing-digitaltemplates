@@ -39,15 +39,15 @@ export default {
     registerDocActu(id_documento,titulo,descripcion,contenido,etiquetas) {
           
            
-                const registro = {titulo,descripcion,contenido,etiquetas};
+                const registro = {id_documento,titulo,descripcion,contenido,etiquetas};
                     const headers = { 'Content-Type':'text/plain'};
-                    return axios.put(ENDPOINT_PATH + "documentos/"+id_documento, registro,{headers});
+                    return axios.post(ENDPOINT_PATH + "documentos_actualizar/", registro,{headers});
                     },
             
 deleteMyDoc(id_documento){
         const headers = { 'Content-Type':'text/plain'};
         const id = { id_documento };
-        return axios.post(ENDPOINT_PATH+"documentos_eliminar/"+id_documento,{headers});
+        return axios.post(ENDPOINT_PATH+"documentos/"+id_documento,{headers});
 }
 
     };
