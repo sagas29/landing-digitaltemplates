@@ -25,79 +25,30 @@
             <div class="container">
                 <div class="row justify-content-center">
                      <div class="row row-grid">
-                            <div class="col-lg-4">
-                             <card shadow class="shadow-lg--hover mt-3">
-                            <div class="d-flex px-0">
-                                <div class="pl-4">
-                                      <icon name="ni ni-briefcase-24" gradient="success" color="white" shadow
-                                          rounded></icon>
-                                    <h5 class="title text-success">Doc.Juridicos</h5>
-                                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
-                                        every summer, and that process will continue whatever happens.</p>
-                                   
-                                      <base-button tag="a" href="#" type="btn btn-primary" class="mt-2"
-                                      @click="$router.push('/detailCategorie/2')">
-                                        Ver documentos
-                                    </base-button>
-                                </div>
-                                
-                            </div>
-                              </card>
-                            </div> 
-                               <div class="col-lg-4">
+                       
+
+                               <div class="col-lg-4" v-for="(cat,indice) in body.data">
                              <card shadow class="shadow-lg--hover mt-3">
                             <div class="d-flex px-0">
                                 <div class="pl-4">
                                     <icon name="ni ni-archive-2" gradient="success" color="white" shadow
                                           rounded></icon>
-                                    <h5 class="title text-success">Doc.contaduria</h5>
+                                    <h5 class="title text-success">{{body.data[indice].nombre}}</h5>
                                     <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
                                         every summer, and that process will continue whatever happens.</p>
                                   
-                                      <base-button tag="a" href="#" type="btn btn-success" class="mt-2"
-                                       @click="$router.push('/detailCategorie/1')">
+                                      <base-button tag="a" href="#" type="btn btn-primary" class="mt-2"
+                                       @click="$router.push('/detailCategorie/'+body.data[indice].id_categoria)">
                                          Ver documentos
                                     </base-button>
                                 </div>
                             </div>
                               </card>
                             </div> 
-                               <div class="col-lg-4">
-                             <card shadow class="shadow-lg--hover mt-3">
-                            <div class="d-flex px-0">
-                                <div class="pl-4">
-                                    <icon name="ni ni-badge" gradient="success" color="white" shadow
-                                          rounded></icon>
-                                    <h5 class="title text-success">Doc.Empleo</h5>
-                                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
-                                        every summer, and that process will continue whatever happens.</p>
-                                    
-                                      <base-button tag="a" href="#" type="btn btn-warning" class="mt-2"
-                                           @click="$router.push('/detailCategorie/4')">
-                                         Ver documentos
-                                    </base-button>
-                                </div>
-                            </div>
-                              </card>
-                            </div> 
-                               <div class="col-lg-4">
-                             <card shadow class="shadow-lg--hover mt-3">
-                            <div class="d-flex px-0">
-                                <div class="pl-4">
-                                      <icon name="ni ni-hat-3" gradient="success" color="white" shadow
-                                          rounded></icon>
-                                    <h5 class="title text-success">Doc.Incripcion de empresas</h5>
-                                    <p>The Arctic Ocean freezes every winter and much of the sea-ice then thaws
-                                        every summer, and that process will continue whatever happens.</p>
-                                   
-                                      <base-button tag="a" href="#" type="btn btn-danger" class="mt-2"
-                                        @click="$router.push('/detailCategorie/3')">
-                                         Ver documentos
-                                    </base-button>
-                                </div>
-                            </div>
-                              </card>
-                            </div>   
+
+                             
+
+
                                    <div class="container mt-5">
                                       <base-button block type="success" @click="$router.push('/home')">
                                       Volver a mi perfil
@@ -117,15 +68,44 @@
 </template>
 <script>
 import auth from "@/logic/auth";
+import content from "@/logic/content";
 export default {
    beforeCreate() {
                
       if(!auth.getUserLogged()){
             this.$router.push("/");
       }
+      
+   },
+   created(){
+  this.getCategories();
+
+   },
+      data(){
+        return{
+          body:[]
+
+        }
+      },
+        methods:{
+           async  getCategories(){
+           try{
+            let response = await content.getCategories();
+            this.body=response.data;
+            
+           }catch (error){
+              console.log(error);
+
+           }
+        },
+
+
+          
+        }
+      }
      
-  },
-};
+
+
 </script>
 <style>
 </style>

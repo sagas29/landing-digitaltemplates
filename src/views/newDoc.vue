@@ -184,7 +184,7 @@ export default {
         async register (){
             try{
             await content.register(this.datosD.id_plantilla,this.datosD.id_usuario,this.datosD.titulo,this.datosD.descripcion,this.body.contenido,this.etiquetas);
-            this.$router.push("/");
+            this.$router.push("/home");
             }catch (error){
                 console.log(error);
                 this.visible=true;

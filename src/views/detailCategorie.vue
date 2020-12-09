@@ -36,7 +36,7 @@
                          </div>
                          <div class="row justify-content-center col-lg-12">
                                 <div class="justify-content-center col-lg-13">      
-                                       <h3>Documentos en la categoria:</h3>
+                                       <h3>{{categorias[this.$route.params.id-1]}}</h3>
                                      
                                 </div>
                                
@@ -64,13 +64,13 @@
     </tr>
   </thead>
   <tbody>
-       <tr v-for="(usuario,indice) in usuarios" >
-      <td>{{usuario.titulo}}</td>
-      <td>{{usuario.descripcion}}</td>
-      <td>{{usuario.created_at}}</td>
-      <td>{{usuario.updated_at}}</td>
+       <tr v-for="(categoria,indice) in categoria" >
+      <td>{{categoria.titulo}}</td>
+      <td>{{categoria.descripcion}}</td>
+      <td>{{categoria.created_at}}</td>
+      <td>{{categoria.updated_at}}</td>
       <td>
-        <a> <button type="button" class="btn btn-primary btn-sm" @click="$router.push('newDoc/'+ usuario.id_plantilla)">Abrir</button></a>
+        <a> <button type="button" class="btn btn-primary btn-sm" @click="$router.push('newDoc/'+ categoria.id_plantilla)">Abrir</button></a>
       </td>
     </tr>
 
@@ -108,12 +108,13 @@ export default {
    },
   data(){
            return{            
-                usuarios: [],
+                categoria: [],
                 categorias:[
-                  "Doc.Juridicos",
                   "Doc.contaduria",
-                  "Doc.Empleo",
-                  "Doc.Incripcion de empresas"   
+                  "Doc.Juridicos",
+                  "Doc.Incripcion de empresas",
+                  "Doc.Empleo"
+                     
                ],
                index:'',
                 Tvisible:false,
@@ -125,7 +126,7 @@ export default {
              async getListCat(){
            try{
             let response = await content.getListCat(this.$route.params.id);
-            this.usuarios = response.data.data;
+            this.categoria = response.data.data;
            
             this.Tvisible=true;
             

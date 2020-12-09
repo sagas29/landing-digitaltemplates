@@ -4,8 +4,6 @@ import AppHeader from "./layout/AppHeader";
 import AppFooter from "./layout/AppFooter";
 
 import splash from "./views/splash.vue";
-
-import Register from "./views/Register.vue";
 import logup from "./views/logup.vue";
 import edit from "./views/edit.vue";
 import home from "./views/home.vue";
@@ -29,15 +27,6 @@ export default new Router({
       components: {
         header: AppHeader,
         default: splash,
-        footer: AppFooter
-      }
-    },
-    {
-      path: "/register",
-      name: "register",
-      components: {
-        header: AppHeader,
-        default: Register,
         footer: AppFooter
       }
     },

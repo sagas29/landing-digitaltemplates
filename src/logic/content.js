@@ -25,6 +25,10 @@ export default {
    
             return axios.get(ENDPOINT_PATH+"planes");
                },
+   getCategories(){
+            return axios.get(ENDPOINT_PATH+"categorias");
+                   },
+               
    register(id_plantilla,id_usuario,titulo,descripcion,contenido,etiquetas) {
           
            
