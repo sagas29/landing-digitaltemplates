@@ -64,26 +64,28 @@
                             </div>
                              <div class="row">
                                  <div class="col-md-2">
-                                  <h5>Email:</h5>
+                                  <h5>Telefono:</h5>
                                  </div>
                                  <div class="col-md-4">
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
-                                            v-model='msg.data.correo'>
+                                            v-model='msg.data.telefono'>
                                         </base-input>
                                 </div>
                                 
+                                
                             </div>
+                            
                              <div class="row">
                                  <div class="col-md-2">
-                                  <h5>Contraseña</h5>
+                                  <h5>Direccion</h5>
                                  </div>
                                  <div class="col-md-4">
                                   <base-input alternative
                                             class="mb-2"
                                             :disabled="dissabled"
-                                            v-model='msg.data.password'>
+                                            v-model='msg.data.direccion'>
                                         </base-input>
                                 </div>
                                  <div class="col-md-2">
@@ -91,23 +93,15 @@
                                         Cambiar Contraseña
                                     </base-button>
                                 </div>
-                            </div>
-                              <div class="row">
                                  <div class="col-md-2">
-                                  <h5>Plan actual:</h5>
-                                 </div>
-                                 <div class="col-md-4">
-                                  <base-input alternative
-                                            class="mb-2"
-                                            disabled
-                                            v-model='msg.data.estado'>
-                                        </base-input>
-                                </div>
-                                <div class="col-md-2">
                                  <base-button tag="a" href="#" size="sm" type="btn btn-alert"  v-show="!dissabled" v-on:click="$router.push('/plans')" class="mt-2">
                                         Ver planes
                                     </base-button>
                                 </div>
+                            </div>
+                              <div class="row">
+                               
+                               
                                 
                                 
                             </div>
@@ -119,14 +113,42 @@
                                  <div class="col-lg-7" v-show="!dissabled">
                                    <base-button type="success" size="md" class="float-right" @click="updateData">Guardar cambios</base-button>
                             </div>
+
+                             <div class="row col-lg-12 text-center mt-0" v-for="(success,indice) in success">
+                               
+                                <base-alert type="success" class="col-lg-12" dismissible>
+                                     <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+                                     <span class="alert-inner--text"><strong>Genial!</strong> Datos actualizados !!!!!</span>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </base-alert>
+                            </div>
  
                         </card>
                             </div>                                                        
                             <div class="mt-2 py-2 border-top text-center">
                             <div class="row justify-content-center">
+
+                              <div>
                                <button type="button" class="btn btn-1 btn-success btn-lg" @click="$router.push('/categories')"><!----><!----><!---->Ver categorias</button>
                                <button type="button" class="btn btn-primary btn-lg" @click="getHistorialDocs"><!----><!----><!---->historial de docuementos</button>
+                              </div>
+
+
+                               <div class="row justify-content-center mt-1" v-for="(alerts,indice) in alerts">
                                
+                                <base-alert type="danger" class="col-lg-12" dismissible>
+                                     <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+                                     <span class="alert-inner--text"><strong>Upps!</strong> Algo  Salio mal! intenta de nuevo o comunicate con nosotros </span>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </base-alert>
+                            </div>
+
+                            
+
                             </div>
                         </div>
                     </div>
@@ -243,6 +265,7 @@ export default {
            return{
                msg:[],
                alerts:[],
+               success:[],
                usuarios:[],
                dissabled: true,
                visible: false,
@@ -274,9 +297,10 @@ export default {
         },
          async updateData(){
             try{
-            await data.updateData(this.msg.data.id_usuario,this.msg.data.nombre,this.msg.data.apellido,this.msg.data.correo);
-            }catch (error){
-                console.log('error update');
+            await data.updateData(this.msg.data.id_usuario,this.msg.data.nombre,this.msg.data.apellido,this.msg.data.telefono,this.msg.data.direccion);
+           this.success.push("ok");
+           }catch (error){
+                console.log(error);
             }
         },
          async deleteMyDoc(id_documento){

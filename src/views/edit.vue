@@ -75,7 +75,7 @@
                            <div class="row">
                            <div class="col-lg-8 marco" >
                           
-                              <div class="doc col-lg-9" align="justify" v-html="this.docTrated"></div>
+                              <div id="divToPrint" class="doc col-lg-9" align="justify" v-html="this.docTrated"></div>
                          
                            </div>
                            <div class=" col-lg-4" >
@@ -83,6 +83,18 @@
                           header-classes="bg-gray pb-1"
                           body-classes="px-lg-0 py-lg-100"
                           class="  border-0 text-center">
+
+                           <div class="row col-lg-12 text-center mt-2" v-for="(success,indice) in success">
+                               
+                                <base-alert type="success" class="col-lg-12" dismissible>
+                                     <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
+                                     <span class="alert-inner--text"><strong>Genial!</strong> Datos actualizados !!!!!</span>
+                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                    </button>
+                                 </base-alert>
+                            </div>
+
                       
                         <div  v-for="(input,indice) in inputs" >
                                 <span class="badge badge-primary">{{tags[indice].etiqueta}}</span>
@@ -94,32 +106,19 @@
                                         </base-input>
                               
                         </div>
-                         <div class="col-md-1 text-center pt-2" v-show="visible">
-                                <a> <button type="button" class="btn btn-success btn-md" @click="DocActuSend"><!----><!----><!---->Guardar datos</button></a>
-                              </div>
+                         <div class=" row col-lg-12  " v-show="visible">
 
-                               <div class="row justify-content-center mt-1" v-for="(alerts,indice) in alerts">
+                                <div class="col-md-8">
+                                <button type="button" class="btn btn-success btn-md" @click="DocActuSend"><!----><!----><!---->Guardar datos</button>
+                                </div>
                                
-                                <base-alert type="danger" class="col-lg-12" dismissible>
-                                     <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
-                                     <span class="alert-inner--text"><strong>Upps!</strong> Algo  Salio mal! intenta de nuevo o comunicate con nosotros </span>
-                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                         <span aria-hidden="true">&times;</span>
-                                    </button>
-                                 </base-alert>
-                            </div>
+                                <div class=" col-md-4">
+                                <button type="button" value="print" class="btn btn-warning btn-md" @click="PrintDiv"><!----><!----><!---->Imprimir</button>
+                                </div>
 
-                             <div class="row justify-content-center mt-1" v-for="(success,indice) in success">
+                        </div>
                                
-                                <base-alert type="success" class="col-lg-12" dismissible>
-                                     <span class="alert-inner--icon"><i class="ni ni-support-16"></i></span>
-                                     <span class="alert-inner--text"><strong>Genial!</strong> Documento actualizado !!!!!</span>
-                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                         <span aria-hidden="true">&times;</span>
-                                    </button>
-                                 </base-alert>
-                            </div>
-
+                              
 
                         
                     </card>
@@ -137,7 +136,7 @@
                  
         
             </div>
-          
+
     </section>
 </template>
 <script>
@@ -255,7 +254,13 @@ export default {
 
            }
         },
-
+          PrintDiv: function() {    
+       var divToPrint = document.getElementById('divToPrint');
+       var popupWin = window.open('', '_blank', 'width=800,height=1000');
+       popupWin.document.open();
+       popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+        popupWin.document.close();
+            }
        }
 };
 

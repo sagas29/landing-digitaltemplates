@@ -10,10 +10,10 @@ export default {
   ///API//
 
   ////X////
-  updateData(id_usuario,nombre,apellido,correo) {
-    const user = { nombre,apellido,correo };
+  updateData(id_usuario,nombre,apellido,telefono,direccion) {
+    const user = { id_usuario,nombre,apellido,telefono,direccion };
     const headers = { 'Content-Type':'text/plain'};
-    return axios.put(ENDPOINT_PATH +"usuarios/"+id_usuario, user,{headers});
+    return axios.post(ENDPOINT_PATH +"usuario_update", user,{headers});
   },
   
   getData(id_usuario){
