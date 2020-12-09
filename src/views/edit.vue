@@ -60,13 +60,14 @@
                               <div class="col-md-4" >
                                <u>{{this.body.created_at}}</u>
                               </div>
+                              <!--
                                  <div class="col-md-2"> 
                                  <span class="badge badge-primary">Editado el:</span>
                              </div>
                               <div class="col-md-3" >
                                <u>{{this.body.updated_at}}</u>
                               </div>
-                             
+                             -->
                               
                               
                           </div>
@@ -125,10 +126,7 @@
                 </div>
                            </div>
                         </template>
-                        <template>
-                            <a> <button type="button" class="btn btn-warning btn-md" @click="DocTratamient"><!----><!----><!---->Imprimir</button></a>
-                    
-                        </template>
+                      
                     </card>
                 </div>
 
@@ -179,7 +177,7 @@ export default {
                
                controls:{
                    text:' <img src="img/brand/icono.png" class="mg-fluid " x style="width: 400px">',
-                   input:'<input type="text" value="XXX"style="border:; width: 210px; "/>',
+                   input:'<input type="text" value="XXX"style="border:0; width: 210px; "/>',
                    radioB:'<input type="radio" id="huey" name="drone" value="huey">',
                    checkB:'<input type="checkbox" id="cbox1" value="first_checkbox">',
                    img:'<img src="img/brand/icono.png" class="mg-fluid " style="width: 400px">'
@@ -256,7 +254,7 @@ export default {
         },
           PrintDiv: function() {    
        var divToPrint = document.getElementById('divToPrint');
-       var popupWin = window.open('', '_blank', 'width=800,height=1000');
+       var popupWin = window.open('', '_blank', 'width=600,height=800');
        popupWin.document.open();
        popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
         popupWin.document.close();
