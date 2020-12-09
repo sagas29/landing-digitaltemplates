@@ -72,7 +72,7 @@ export default new Router({
       components: {
        // header: AppHeader,
         default: home,
-        footer: AppFooter
+        //footer: AppFooter
       }
     },
     {
