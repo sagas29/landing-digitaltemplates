@@ -28,11 +28,11 @@ export default {
    getCategories(){
             return axios.get(ENDPOINT_PATH+"categorias");
                    },
-               
-   register(id_plantilla,id_usuario,titulo,descripcion,contenido,etiquetas) {
+        /////////new dOC/////////       
+   register(id_plantilla,id_usuario,titulo,descripcion,contenido) {
           
            
-        const registro = { id_plantilla,id_usuario,titulo,descripcion,contenido,etiquetas};
+        const registro = { id_plantilla,id_usuario,titulo,descripcion,contenido};
             const headers = { 'Content-Type':'text/plain'};
             return axios.post(ENDPOINT_PATH + "documentos", registro,{headers});
             },
