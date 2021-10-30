@@ -98,7 +98,7 @@
 
                       
                         <div  v-for="(input,indice) in inputs" >
-                                <span class="badge badge-primary">{{tags[indice].nombre}}</span>
+                                <span class="badge badge-primary">{{tags[indice].etiqueta}}</span>
                                <base-input alternative
                                             class="mb-10"
                                            v-model='inputs[indice].valor'
